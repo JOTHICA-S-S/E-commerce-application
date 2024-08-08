@@ -1,0 +1,29 @@
+.dds__form{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+}
+
+.dds__container__modified
+{
+    background-color: #f5f6f7;
+    padding:40px;
+    width:fit-content;
+    margin-top: 40px;
+}
+
+.dds__h3
+{
+    width: fit-content;
+}
+
+.dds__row__modified{
+    width: 400px;
+}
+
+
+.dds__form__Section{
+    width:fit-content;
+}
+

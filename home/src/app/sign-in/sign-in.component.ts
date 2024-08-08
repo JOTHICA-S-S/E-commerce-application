@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent {
+  showPassword:boolean=false;
+
+  togglePasswordVisibility()
+  {
+    this.showPassword=!this.showPassword;
+  }
 
 }

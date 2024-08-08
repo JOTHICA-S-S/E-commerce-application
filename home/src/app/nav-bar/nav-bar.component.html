@@ -1,8 +1,8 @@
 <div class="page">
 
-    <div class="custom__side-nav-max-width">
+    <div class="custom__side-nav-max-width ">
         <ul class="dds__side-nav__menu top-menu">
-          <li #nav1 class="dds__side-nav__item" >
+          <li  class="dds__side-nav__item" [class.dds__side-nav__item--selected]="selectedItem==='Ecommerce'">
             <a routerLink="/navbar/Ecommerce" (click)="selected('Ecommerce')">
               <span class="dds__icon dds__icon--home dds__side-nav__icon" aria-hidden="true"></span>
               <span>Ecommerce</span>
@@ -10,14 +10,14 @@
           </li>
         </ul>
         <ul class="dds__side-nav__menu bottom-menu">
-            <li #nav2 class="dds__side-nav__item" >
+            <li class="dds__side-nav__item" [class.dds__side-nav__item--selected]="selectedItem==='SignUp'">
                 <a routerLink="/navbar/SignUp" (click)="selected('SignUp')">
                 <span class="dds__icon dds__icon--add-sqr dds__side-nav__icon" aria-hidden="true"></span>
                 <span>SignUp</span>
                 </a>
             </li>
 
-            <li #nav3 class="dds__side-nav__item" >
+            <li class="dds__side-nav__item" [class.dds__side-nav__item--selected]="selectedItem==='SignIn'">
                 <a routerLink="/navbar/SignIn" (click)="selected('SignIn')">
                 <span class="dds__icon dds__icon--log-in dds__side-nav__icon" aria-hidden="true"></span>
                 <span>SignIn</span>
@@ -30,5 +30,4 @@
         <router-outlet></router-outlet>
     </div>
 </div>
-
 

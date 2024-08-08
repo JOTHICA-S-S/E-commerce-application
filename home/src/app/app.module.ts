@@ -7,6 +7,7 @@ import { NavBArComponent } from './nav-bar/nav-bar.component';
 import { EcommComponent } from './ecomm/ecomm.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { NavBArRoutingModule } from './nav-bar/nav-bar-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NavBArRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

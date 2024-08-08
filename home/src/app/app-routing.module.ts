@@ -6,14 +6,17 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:"/navbar", pathMatch:"full"},
+  {path:'',redirectTo:"/navbar/Ecommerce", pathMatch:"full"},
   {path:"navbar",component:NavBArComponent,
     children:[
       {path:"Ecommerce",component:EcommComponent},
       {path:"SignUp",component:SignUpComponent},
-      {path:"SignIn",component:SignInComponent},
-    ]
-  }
+      {path:"SignIn",component:SignInComponent}
+        ]
+      }
+  
+    
+  
 ];
 
 @NgModule({

@@ -8,12 +8,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 4px 0 8px rgba(0,0,0,0.3);
+     box-shadow: inset -4px 2px 8px rgb(14, 14, 14, 0.3); 
 }
 
 .content{
-    
     flex:1;
-    background-color: beige;
-    
+    background: #0672cb;
 }

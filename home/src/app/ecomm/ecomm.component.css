@@ -1,0 +1,28 @@
+.container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+}
+
+
+
+.header{
+    color: #293b4d;
+    text-align: center;
+    font-weight:bolder;
+    font-style: italic;
+    font-size: 40px;
+    line-height: 48px;
+    margin-bottom: 40px;
+}
+
+.content
+{
+    background-color: #f5f6f7;
+    color:#0e0e0e;
+    text-align: center;
+    padding:20px;
+    border-radius: 4px;
+
+}

@@ -1,0 +1,73 @@
+<form id="sign-in-290649572" data-dds="form" class="dds__form">
+    <div class="dds__container__modified">
+      <fieldset class="dds__form__section">
+        <div class="dds__h3">Sign Up</div>
+        <div class="dds__row__modified">
+          <div class="dds__col--1 dds__col--sm-3">
+            <span class="dds__body-2 dds__form__section">Already having an account?&nbsp;</span>
+            <a class="" id="link-id-259781484" routerLink="/SignIn">Sign In</a>
+            <div class="dds__form__field">
+              <div
+                id="message-bar-container-320808709"
+                data-dds="message-bar"
+                class="dds__message-bar dds__message-bar--error dds__message-bar--hide"
+                role="dialog"
+                aria-describedby="message-bar-content-320808709"
+              >
+                <span class="dds__icon dds__icon--alert-error dds__message-bar__icon" aria-hidden="true"></span>
+                <div id="message-bar-content-320808709" class="dds__message-bar__content"></div>
+              </div>
+            </div>
+            <div class="dds__form__section">
+              <div class="dds__form__field">
+                <div id="text-input-container-848483597" class="dds__input-text__container">
+                  <label id="text-input-label-848483597" for="text-input-control-848483597" class="dds__label dds__label--required">
+                    Email
+                  </label>
+                  <div class="dds__input-text__wrapper">
+                    <input
+                      type="text"
+                      class="dds__input-text"
+                      name="text-input-control-name-848483597"
+                      id="text-input-control-848483597"
+                      required="true"
+                      aria-labelledby="text-input-label-848483597 text-input-helper-848483597"
+                    />
+                    <div id="text-input-error-848483597" class="dds__invalid-feedback">Enter an email to continue</div>
+                  </div>
+                </div>
+              </div>
+              <div class="dds__form__field">
+                <div id="inputpassword-container-187365590" class="dds__input-text__container">
+                  <label id="inputpassword-label-187365590" for="inputpassword-187365590" class="dds__label dds__label--required">
+                    Password
+                  </label>
+                  <button type="button" class="dds__input__action dds__input__action--switch" title="Show Password"
+                  (click)="togglePasswordVisibility()">{{ showPassword ? 'Hide': 'Show'}}</button>
+                  <div class="dds__input-text__wrapper">
+                    <input
+                      id="inputpassword-187365590"
+                      name="inputpassword-187365590"
+                      [type]="showPassword ? 'text' : 'password'"
+                      data-dds="input-password"
+                      class="dds__input-text"
+                      maxlength="256"
+                      required="true"
+                      aria-labelledby="inputpassword-label-187365590"
+                    />
+                    <div id="inputpassword-feedback-187365590" class="dds__invalid-feedback">Enter a password to continue</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="dds__form__section">
+              <button id="sign-in-button" class="dds__button dds__button--block dds__form__submit" type="submit">Sign Up</button>
+            </div>
+           
+          
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </form>
+  

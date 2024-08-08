@@ -1,0 +1,19 @@
+.page{
+    display: flex;
+}
+
+.custom__side-nav-max-width{
+    width: fit-content;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 4px 0 8px rgba(0,0,0,0.3);
+}
+
+.content{
+    
+    flex:1;
+    background-color: beige;
+    
+}

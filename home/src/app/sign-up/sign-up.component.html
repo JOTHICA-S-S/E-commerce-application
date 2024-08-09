@@ -18,14 +18,15 @@
                 <div id="message-bar-content-320808709" class="dds__message-bar__content"></div>
               </div>
             </div>
-            <div class="dds__form__section">
+            <div class="dds__form__section1">
               <div class="dds__form__field">
                 <div id="text-input-container-848483597" class="dds__input-text__container">
                   <label id="text-input-label-848483597" for="text-input-control-848483597" class="dds__label dds__label--required">
                     Email
                   </label>
                   <div class="dds__input-text__wrapper">
-                    <input
+                    <input 
+                    [(ngModel)]="userData.email"
                       type="text"
                       class="dds__input-text"
                       name="text-input-control-name-848483597"
@@ -37,6 +38,7 @@
                   </div>
                 </div>
               </div>
+
               <div class="dds__form__field">
                 <div id="inputpassword-container-187365590" class="dds__input-text__container">
                   <label id="inputpassword-label-187365590" for="inputpassword-187365590" class="dds__label dds__label--required">
@@ -46,6 +48,7 @@
                   (click)="togglePasswordVisibility()">{{ showPassword ? 'Hide': 'Show'}}</button>
                   <div class="dds__input-text__wrapper">
                     <input
+                    [(ngModel)]="userData.password"
                       id="inputpassword-187365590"
                       name="inputpassword-187365590"
                       [type]="showPassword ? 'text' : 'password'"
@@ -59,9 +62,50 @@
                   </div>
                 </div>
               </div>
+
+              <div class="dds__form__field">
+                <div id="text-input-container-848483599" class="dds__input-text__container">
+                  <label id="text-input-label-848483599" for="text-input-control-848483599" class="dds__label dds__label--required">
+                    Role
+                  </label>
+                  <div class="dds__input-text__wrapper">
+                    <input 
+                    [(ngModel)]="userData.role"
+                      type="text"
+                      class="dds__input-text"
+                      name="text-input-control-name-848483599"
+                      id="text-input-control-848483599"
+                      required="true"
+                      aria-labelledby="text-input-label-848483599 text-input-helper-848483599"
+                    />
+                    <div id="text-input-error-848483599" class="dds__invalid-feedback">Enter the role to continue</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dds__form__field">
+                <div id="text-input-container-848483593" class="dds__input-text__container">
+                  <label id="text-input-label-848483593" for="text-input-control-848483593" class="dds__label dds__label--required">
+                    Gender
+                  </label>
+                  <div class="dds__input-text__wrapper">
+                    <input 
+                    [(ngModel)]="userData.gender"
+                      type="text"
+                      class="dds__input-text"
+                      name="text-input-control-name-848483593"
+                      id="text-input-control-text-input-control-name-848483593"
+                      required="true"
+                      aria-labelledby="text-input-label-text-input-control-name-848483593 text-input-helper-text-input-control-name-848483593"
+                    />
+                    <div id="text-input-error-text-input-control-name-848483593" class="dds__invalid-feedback">Enter the gender</div>
+                  </div>
+                </div>
+              </div>
+
             </div>
             <div class="dds__form__section">
-              <button id="sign-in-button" class="dds__button dds__button--block dds__form__submit" type="submit">Sign Up</button>
+              <button (click)="signUp()" id="sign-in-button" class="dds__button dds__button--block dds__form__submit" type="submit">Sign Up</button>
             </div>
            
           

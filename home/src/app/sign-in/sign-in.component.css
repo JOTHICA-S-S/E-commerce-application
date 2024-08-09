@@ -10,7 +10,6 @@
     background-color: #f5f6f7;
     padding:40px;
     width:fit-content;
-    margin-top: 40px;
 }
 
 .dds__h3
@@ -27,3 +26,6 @@
     width:fit-content;
 }
 
+.dds__input-text{
+    height:38px;
+}

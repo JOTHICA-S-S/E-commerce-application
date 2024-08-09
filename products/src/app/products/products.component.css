@@ -1,0 +1,22 @@
+.dds__tabs__list{
+    padding: 0px;
+}
+
+.flexcards{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content:space-evenly;
+}
+
+.dds__card{
+    margin:10px;
+    max-width: 360px;
+}
+
+.dds__table{
+    margin:0px;
+    border:1px solid #0e0e0e;
+    height:80vh;
+    overflow: scroll;
+}

@@ -19,13 +19,13 @@
               </div>
             </div>
             <div class="dds__form__section">
-              <div class="dds__form__field">
+              <div class="dds__form__field" >
                 <div id="text-input-container-848483597" class="dds__input-text__container">
                   <label id="text-input-label-848483597" for="text-input-control-848483597" class="dds__label dds__label--required">
                     Email
                   </label>
                   <div class="dds__input-text__wrapper">
-                    <input
+                    <input [(ngModel)]="userData.email"
                       type="text"
                       class="dds__input-text"
                       name="text-input-control-name-848483597"
@@ -37,6 +37,7 @@
                   </div>
                 </div>
               </div>
+
               <div class="dds__form__field">
                 <div id="inputpassword-container-187365590" class="dds__input-text__container">
                   <label id="inputpassword-label-187365590" for="inputpassword-187365590" class="dds__label dds__label--required">
@@ -45,7 +46,7 @@
                   <button type="button" class="dds__input__action dds__input__action--switch" title="Show Password"
                   (click)="togglePasswordVisibility()">{{ showPassword ? 'Hide': 'Show'}}</button>
                   <div class="dds__input-text__wrapper">
-                    <input
+                    <input [(ngModel)]="userData.password"
                       id="inputpassword-187365590"
                       name="inputpassword-187365590"
                       [type]="showPassword ? 'text' : 'password'"
@@ -60,7 +61,7 @@
                 </div>
               </div>
             </div>
-            <div class="dds__form__section">
+            <div class="dds__form__section" (click)="signIn()">
               <button id="sign-in-button" class="dds__button dds__button--block dds__form__submit" type="submit">Sign In</button>
             </div>
            

@@ -10,12 +10,12 @@
     background-color: #f5f6f7;
     padding:40px;
     width:fit-content;
-    margin-top: 40px;
 }
 
 .dds__h3
 {
     width: fit-content;
+    font-size: 32px;
 }
 
 .dds__row__modified{
@@ -23,7 +23,15 @@
 }
 
 
-.dds__form__Section{
+.dds__form__Section1{
     width:fit-content;
+    margin-top: 10px;
 }
 
+.dds__form__field{
+    margin-top:10px;
+}
+
+.dds__input-text{
+    height:38px;
+}

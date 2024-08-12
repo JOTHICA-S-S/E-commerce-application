@@ -10,7 +10,7 @@ export class ProductsComponent implements OnInit {
   productsData:any=[];
 
    columns: any[] = [];
-  data: any[] = [];
+    data: any[] = [];
 
   constructor(private navService:NavigateService){}
 

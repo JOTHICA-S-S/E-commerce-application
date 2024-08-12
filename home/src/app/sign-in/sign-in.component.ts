@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,7 +12,7 @@ export class SignInComponent {
 
   showPassword:boolean=false;
 
-  constructor(private authService:AuthService){}
+  constructor(private authService:AuthService, private route:Router){}
 
   togglePasswordVisibility()
   {
@@ -23,8 +24,9 @@ export class SignInComponent {
       this.authService.signIn(this.userData).subscribe({
         next:res=>{
             console.log(res);
-            
-        },
+            this.route.navigate(["/products-mfe"]);
+        }
+        ,
         error:err=>{
           console.log(err);
           

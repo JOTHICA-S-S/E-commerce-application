@@ -16,3 +16,7 @@
     flex:1;
     background: #a4b8cd;
 }
+
+.dds__side-nav__menu{
+    display: fixed;
+}

@@ -9,13 +9,15 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { TokeInterceptorService } from './toke-interceptor.service';
+import { ProductsListComponent } from './products-list/products-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EcommComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
+    ProductsListComponent
   ],
   imports: [
     BrowserModule,

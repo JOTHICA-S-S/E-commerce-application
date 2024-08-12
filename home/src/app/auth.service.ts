@@ -22,7 +22,7 @@ export class AuthService {
 
   isAuthenticated()
   {
-    //double !! is to make localstorage.getItem retunr ture/ flase (i.e a boolean value)
+    //double !! is to make localstorage.getItem return ture/ flase (i.e a boolean value)
     return !!localStorage.getItem("token");
   }
 }

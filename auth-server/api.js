@@ -12,6 +12,10 @@ const router=express.Router();
 // //including the products.js file having product data
 // const productData=require("./products");
 
+//import jsonwebtoken to cerate token
+const jwt=require("jsonwebtoken");
+
+
 
 //when the user hits on empty path(//localhost:8000/api), then the corresponding message gets printed
 router.get("/",(req,res)=>{
@@ -70,7 +74,19 @@ router.post("/signUp",(req,res)=>{
                 res.send(err);
                 return;
             }
-            res.send("user data saved successfully!");
+
+            //fist we heve to create payload before creating the token
+            //fr creating the payload, we have to cerate subject using anyof the data we have, here we prefer email as they are unique
+            let payload={
+                subject:userdata.email
+            }
+
+            //To create token, use the package instance(jwt) and use sign method, sign method requires two paramaters,
+            // One is the payload we have cerated and the other is a unique key; we need to  cerate a private key for our application ans share it
+            let token= jwt.sign(payload,"test");
+
+            // Now , instead of sending the userdata saved successfully message, we can send the token, but in object formaat.
+            res.send({token});
         })
     });
     
@@ -110,8 +126,11 @@ router.post("/signIn",(req,res)=>{
         res.send("Incorrect password");
         return;
        }
-
-       res.send("user found");
+       let payload={
+        subject:userData.email
+    }
+    let token= jwt.sign(payload,"test");
+    res.send({token});
 
     })
 
@@ -128,7 +147,8 @@ router.get("/productData", (req,res)=>{
             return;
         }
         ProddataArr= JSON.parse(data);
-        res.send(ProddataArr)
+       
+        
     })
 });
 

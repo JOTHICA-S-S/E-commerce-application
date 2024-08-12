@@ -20,3 +20,7 @@
     height:80vh;
     overflow: scroll;
 }
+
+.dds__tabs__list{
+    background-color: white;
+}

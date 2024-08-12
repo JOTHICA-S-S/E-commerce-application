@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
           console.log(event.urlAfterRedirects);
           console.log(event);
         }
-
     })
     
   }
@@ -36,16 +35,12 @@ export class AppComponent implements OnInit {
 
   setselectedItem(url:string)
   {
-
-   
-    
     if(url.includes("Ecommerce"))
       this.selectedItem="Ecommerce";
     if(url.includes("SignIn"))
       this.selectedItem="SignIn";
     if(url.includes("SignUp"))
       this.selectedItem="SignUp";
-
   }
  
    

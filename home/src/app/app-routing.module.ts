@@ -12,8 +12,18 @@ const routes: Routes = [
   {path:"Ecommerce",component:EcommComponent},
   {path:"SignIn",component:SignInComponent},
   {path:"SignUp",component:SignUpComponent},
-  {path:"Products",component:ProductsListComponent}
-  
+  {path:"Products",component:ProductsListComponent,canActivate:[authGuard]}
+  // {
+  //   path:"products-mfe",
+  //     loadChildren:()=>
+  //       loadRemoteModule({
+  //         remoteEntry:"http://localhost:5200/remoteEntry.js",
+  //         exposedModule:"./ProductsModule",
+  //         type:"module"
+  //       }).then(m=>m.ProductsModule),
+  //       canActivate:[authGuard]
+      
+  // }
      
   
 ];

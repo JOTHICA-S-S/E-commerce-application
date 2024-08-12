@@ -42,8 +42,8 @@ export class AppComponent implements OnInit {
       this.selectedItem="SignIn";
     if(url.includes("SignUp"))
       this.selectedItem="SignUp";
-    if(url.includes("products"))
-      this.selectedItem="products";
+    if(url.includes("Products"))
+      this.selectedItem="Products";
   }
  
   signOut()

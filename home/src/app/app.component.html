@@ -8,21 +8,34 @@
               <span>Ecommerce</span>
             </a>
           </li>
+          <li  class="dds__side-nav__item" [class.dds__side-nav__item--selected]="selectedItem==='products'">
+            <a (click)="navigateToProducts()">
+              <span class="dds__icon dds__icon--home dds__side-nav__icon" aria-hidden="true"></span>
+              <span>Products</span>
+            </a>
+          </li>
         </ul>
         <ul class="dds__side-nav__menu bottom-menu">
             <li class="dds__side-nav__item" [class.dds__side-nav__item--selected]="selectedItem==='SignUp'">
-                <a routerLink="/SignUp">
+                <a routerLink="/SignUp" *ngIf="!authService.isAuthenticated()">
                 <span class="dds__icon dds__icon--add-sqr dds__side-nav__icon" aria-hidden="true"></span>
-                <span>SignUp</span>
+                <span>Sign Up</span>
                 </a>
             </li>
 
             <li class="dds__side-nav__item" [class.dds__side-nav__item--selected]="selectedItem==='SignIn'">
-                <a routerLink="/SignIn">
+                <a routerLink="/SignIn"  *ngIf="!authService.isAuthenticated()"> 
                 <span class="dds__icon dds__icon--log-in dds__side-nav__icon" aria-hidden="true"></span>
-                <span>SignIn</span>
+                <span>Sign In</span>
                 </a>
             </li>
+
+            <li class="dds__side-nav__item" [class.dds__side-nav__item--selected]="selectedItem==='SignOut'">
+              <a (click)="signOut()"  *ngIf="authService.isAuthenticated()">
+              <span class="dds__icon dds__icon--log-in dds__side-nav__icon" aria-hidden="true"></span>
+              <span>Sign Out</span>
+              </a>
+          </li>
         </ul>
     </div>
 

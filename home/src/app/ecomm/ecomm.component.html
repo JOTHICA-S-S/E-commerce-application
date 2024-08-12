@@ -4,9 +4,12 @@
             <p>Welcome to <p>
             <p> E-Commerce Application !</p>
         </div>
-        <div class="content">
+        <div class="content" *ngIf="!authService.isAuthenticated()">
             <p class="signIn"><a routerLink="/SignIn">sign In</a> To view the application</p>
             <p class="signUp">Don't have an account ? <a routerLink="/SignUp">sign Up</a></p>
+        </div>
+        <div class="content" *ngIf="authService.isAuthenticated()">
+            <p class="signIn">View All <a routerLink="/products-mfe">Products</a></p>
         </div>
     </div>
     

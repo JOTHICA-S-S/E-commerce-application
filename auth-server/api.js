@@ -138,7 +138,9 @@ router.post("/signIn",(req,res)=>{
 
 
 //api for calling producst data
-router.get("/productData", (req,res)=>{
+// after cerating the verifyToken fucntion, we have to add it in productData api, to verify the token,
+// only if the token is verifiued one, then the api called will be continued.(i.e) we will be able to send the response to the front end.
+router.get("/productData",verifyToken, (req,res)=>{
     fs.readFile("products.json", "utf-8", (err, data)=>{
         let ProddataArr=[];
 
@@ -147,10 +149,37 @@ router.get("/productData", (req,res)=>{
             return;
         }
         ProddataArr= JSON.parse(data);
-       
-        
+        res.send(ProddataArr);
     })
 });
+
+
+function verifyToken(req,res, next)
+{
+    //checking whther the request headers has authorization key or not
+    if(!req.headers.authorization)
+    {
+        res.send("unathorized request");
+    }
+
+    //if it has authorization key, then we are getting the token from the key by splitting it
+    let token=req.headers.authorization.split(" ")[1];
+
+    // if the token which we split is null, then unauthorized access,
+    if (token==='null')
+    {
+        res.send("unathorized request");
+    }
+
+    //if, token is present, then we have to verify the token using payload, using verify method of jwt
+    let payload=jwt.verify(token,"test");
+    if(!payload){
+        res.send("unathorized request");
+    }
+
+    //if payload is present , then we have to call the next method, that, is the products api call can be continued
+    next();
+}
 
 //exporting the routing using module.exports
 module.exports=router;

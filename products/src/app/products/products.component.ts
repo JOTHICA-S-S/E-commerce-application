@@ -16,7 +16,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.get();
-  }
+}
 
   ngAfterViewInit(){
     const element = document.getElementById("tabs-895821743");
@@ -33,7 +33,15 @@ export class ProductsComponent implements OnInit {
             // console.log(this.productsData);  
         },
         error: err=>{
-          console.log(err);
+          
+            console.log(err);
+            const authEvent=new Event("AuthFromProductsMfe");
+            window.dispatchEvent(authEvent);
+            localStorage.setItem("AuthInfo","false");
+          
+            
+            
+          
           
         }
       })

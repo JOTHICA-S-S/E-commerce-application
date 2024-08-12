@@ -19,4 +19,10 @@ export class AuthService {
   {
      return this.http.post<any>(this.SignInUrl,userData);
   }
+
+  isAuthenticated()
+  {
+    //double !! is to make localstorage.getItem retunr ture/ flase (i.e a boolean value)
+    return !!localStorage.getItem("token");
+  }
 }

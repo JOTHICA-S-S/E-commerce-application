@@ -24,6 +24,7 @@ export class SignInComponent {
       this.authService.signIn(this.userData).subscribe({
         next:res=>{
             console.log(res);
+            localStorage.setItem("token",res.token);
             this.route.navigate(["/products-mfe"]);
         }
         ,

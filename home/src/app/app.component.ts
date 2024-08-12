@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -27,10 +28,21 @@ export class AppComponent implements OnInit {
           console.log(event);
         }
     })
+
+    window.addEventListener("AuthFromProductsMfe",()=>{
+      let Data=localStorage.getItem("AuthInfo");
+      { 
+          if(Data==="false")
+          {
+            localStorage.removeItem("token");
+            this.router.navigate(["/SignIn"]);
+          }
+      }
+    });
     
   }
 
-  constructor(private router:Router){}
+  constructor(private router:Router, public authService:AuthService){}
  
 
   setselectedItem(url:string)
@@ -41,7 +53,21 @@ export class AppComponent implements OnInit {
       this.selectedItem="SignIn";
     if(url.includes("SignUp"))
       this.selectedItem="SignUp";
+    if(url.includes("products"))
+      this.selectedItem="products";
   }
  
+  signOut()
+  {
+      localStorage.removeItem("token");
+      this.router.navigate(["/Ecommerce"]);
+  }
+
+  navigateToProducts()
+  {
+    this.router.navigate(["/products-mfe"]);
+  }
+
+
    
 }

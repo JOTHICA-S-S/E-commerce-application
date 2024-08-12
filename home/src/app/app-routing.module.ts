@@ -5,23 +5,15 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { authGuard } from './auth.guard';
+import { ProductsListComponent } from './products-list/products-list.component';
 
 const routes: Routes = [
   {path:'',redirectTo:"Ecommerce", pathMatch:"full"},
   {path:"Ecommerce",component:EcommComponent},
   {path:"SignIn",component:SignInComponent},
   {path:"SignUp",component:SignUpComponent},
-  {
-    path:"products-mfe",
-      loadChildren:()=>
-        loadRemoteModule({
-          remoteEntry:"http://localhost:5200/remoteEntry.js",
-          exposedModule:"./ProductsModule",
-          type:"module"
-        }).then(m=>m.ProductsModule),
-        canActivate:[authGuard]
-      
-  }
+  {path:"Products",component:ProductsListComponent}
+  
      
   
 ];

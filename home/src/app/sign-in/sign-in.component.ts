@@ -25,7 +25,7 @@ export class SignInComponent {
         next:res=>{
             console.log(res);
             localStorage.setItem("token",res.token);
-            this.route.navigate(["/products-mfe"]);
+            this.route.navigate(["/Products"]);
         }
         ,
         error:err=>{

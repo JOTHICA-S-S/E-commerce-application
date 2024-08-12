@@ -28,17 +28,6 @@ export class AppComponent implements OnInit {
           console.log(event);
         }
     })
-
-    window.addEventListener("AuthFromProductsMfe",()=>{
-      let Data=localStorage.getItem("AuthInfo");
-      { 
-          if(Data==="false")
-          {
-            localStorage.removeItem("token");
-            this.router.navigate(["/SignIn"]);
-          }
-      }
-    });
     
   }
 
@@ -61,11 +50,6 @@ export class AppComponent implements OnInit {
   {
       localStorage.removeItem("token");
       this.router.navigate(["/Ecommerce"]);
-  }
-
-  navigateToProducts()
-  {
-    this.router.navigate(["/products-mfe"]);
   }
 
 

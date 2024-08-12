@@ -3,17 +3,17 @@ import { NavigateService } from '../navigate.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-products-list',
+  templateUrl: './products-list.component.html',
+  styleUrls: ['./products-list.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsListComponent implements OnInit {
   productsData:any=[];
 
    columns: any[] = [];
     data: any[] = [];
 
-  constructor(private navService:NavigateService){}
+  constructor(private navService:NavigateService, private route:Router){}
 
   ngOnInit(): void {
     this.get();
@@ -36,10 +36,8 @@ export class ProductsComponent implements OnInit {
         error: err=>{
           
             console.log(err);
-            const authEvent=new Event("AuthFromProductsMfe");
-            window.dispatchEvent(authEvent);
-            localStorage.setItem("AuthInfo","false");
-           
+            this.route.navigate(["/SignIn"]);
+            localStorage.removeItem("token");
           
         }
       })
@@ -88,3 +86,4 @@ export class ProductsComponent implements OnInit {
   }
 
 }
+

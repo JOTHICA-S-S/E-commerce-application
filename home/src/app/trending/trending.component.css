@@ -1,0 +1,18 @@
+.dds__tabs__list{
+    padding: 0px;
+    background-color: white;
+    width: 100%;
+
+    li{
+        width:500px;
+        width:50%;
+    }
+}
+
+.dds__tabs__tab__label{
+    text-align: center;
+}
+
+.dds__tabs__tab{
+    max-width:none;
+}

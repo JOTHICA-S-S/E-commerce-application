@@ -11,6 +11,8 @@ export class SignInComponent {
   userData={email:"",password:""};
 
   showPassword:boolean=false;
+  isSubmitting:boolean=false;
+
 
   constructor(private authService:AuthService, private route:Router){}
 
@@ -26,6 +28,7 @@ export class SignInComponent {
             console.log(res);
             localStorage.setItem("token",res.token);
             this.route.navigate(["/Products"]);
+            this.isSubmitting=true;
         }
         ,
         error:err=>{

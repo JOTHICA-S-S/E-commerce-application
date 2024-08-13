@@ -1,5 +1,6 @@
 .dds__tabs__list{
     padding: 0px;
+    
 }
 
 .flexcards{
@@ -15,9 +16,10 @@
 }
 
 .dds__table{
-    margin:0px;
+    margin-left:0px;
     border:1px solid #0e0e0e;
     height:80vh;
+    max-width:60vw;
     overflow: scroll;
 }
 

@@ -6,13 +6,18 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { authGuard } from './auth.guard';
 import { ProductsListComponent } from './products-list/products-list.component';
+import { TrendingComponent } from './trending/trending.component';
+import { ShopsComponent } from './shops/shops.component';
+import { CollectionsComponent } from './collections/collections.component';
+import { deactiveAuthGuard } from './deactive-auth.guard';
+import { childAuthGuard } from './child-auth.guard';
 
 const routes: Routes = [
   {path:'',redirectTo:"Ecommerce", pathMatch:"full"},
   {path:"Ecommerce",component:EcommComponent},
   {path:"SignIn",component:SignInComponent},
-  {path:"SignUp",component:SignUpComponent},
-  {path:"Products",component:ProductsListComponent,canActivate:[authGuard]}
+  {path:"SignUp",component:SignUpComponent, canDeactivate:[deactiveAuthGuard]},
+  {path:"Products",component:ProductsListComponent,canActivate:[authGuard]},
   // {
   //   path:"products-mfe",
   //     loadChildren:()=>
@@ -24,7 +29,12 @@ const routes: Routes = [
   //       canActivate:[authGuard]
       
   // }
-     
+  {path:"Trending",component:TrendingComponent, canActivateChild:[childAuthGuard],
+    children:[
+      {path:"shops", component:ShopsComponent},//      http://localhost:5100/Trending/shops
+      {path:"collections", component:CollectionsComponent}  //  http://localhost:5100/Trending/collections
+    ]
+  },
   
 ];
 

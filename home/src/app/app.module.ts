@@ -10,6 +10,9 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { TokeInterceptorService } from './toke-interceptor.service';
 import { ProductsListComponent } from './products-list/products-list.component';
+import { CollectionsComponent } from './collections/collections.component';
+import { ShopsComponent } from './shops/shops.component';
+import { TrendingComponent } from './trending/trending.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { ProductsListComponent } from './products-list/products-list.component';
     EcommComponent,
     SignUpComponent,
     SignInComponent,
-    ProductsListComponent
+    ProductsListComponent,
+    CollectionsComponent,
+    ShopsComponent,
+    TrendingComponent
   ],
   imports: [
     BrowserModule,

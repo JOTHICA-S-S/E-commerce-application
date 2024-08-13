@@ -38,12 +38,14 @@ export class AppComponent implements OnInit {
   {
     if(url.includes("Ecommerce"))
       this.selectedItem="Ecommerce";
-    if(url.includes("SignIn"))
+    else if(url.includes("SignIn"))
       this.selectedItem="SignIn";
-    if(url.includes("SignUp"))
+    else if(url.includes("SignUp"))
       this.selectedItem="SignUp";
-    if(url.includes("Products"))
+   else if(url.includes("Products"))
       this.selectedItem="Products";
+    else if(url.includes("Trending"))
+      this.selectedItem="Trending";
   }
  
   signOut()

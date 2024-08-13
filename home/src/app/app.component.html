@@ -14,6 +14,12 @@
               <span>Products</span>
             </a>
           </li>
+          <li  class="dds__side-nav__item" [class.dds__side-nav__item--selected]="selectedItem==='Trending'">
+            <a  routerLink="/Trending/shops">
+              <span class="dds__icon dds__icon--home dds__side-nav__icon" aria-hidden="true"></span>
+              <span>Trending</span>
+            </a>
+          </li>
         </ul>
         <ul class="dds__side-nav__menu bottom-menu">
             <li class="dds__side-nav__item" [class.dds__side-nav__item--selected]="selectedItem==='SignUp'">

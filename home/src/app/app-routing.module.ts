@@ -15,8 +15,8 @@ import { childAuthGuard } from './child-auth.guard';
 const routes: Routes = [
   {path:'',redirectTo:"Ecommerce", pathMatch:"full"},
   {path:"Ecommerce",component:EcommComponent},
-  {path:"SignIn",component:SignInComponent},
-  {path:"SignUp",component:SignUpComponent, canDeactivate:[deactiveAuthGuard]},
+  {path:"SignIn",component:SignInComponent,canDeactivate:[deactiveAuthGuard]},
+  {path:"SignUp",component:SignUpComponent}, 
   {path:"Products",component:ProductsListComponent,canActivate:[authGuard]},
   // {
   //   path:"products-mfe",

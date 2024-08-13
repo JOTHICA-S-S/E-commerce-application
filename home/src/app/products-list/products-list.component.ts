@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./products-list.component.css']
 })
 export class ProductsListComponent implements OnInit {
-  productsData:any=[];
+    productsData:any=[];
 
-   columns: any[] = [];
+    columns: any[] = [];
     data: any[] = [];
 
   constructor(private navService:NavigateService, private route:Router){}

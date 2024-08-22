@@ -25,7 +25,7 @@ export class SignInComponent {
   {
       this.authService.signIn(this.userData).subscribe({
         next:res=>{
-            console.log(res);
+            console.log(`res for signIn is ${JSON.stringify(res)}`);
             localStorage.setItem("token",res.token);
             this.route.navigate(["/Products"]);
             this.isSubmitting=true;

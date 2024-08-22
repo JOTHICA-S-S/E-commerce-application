@@ -11,12 +11,14 @@ import { ShopsComponent } from './shops/shops.component';
 import { CollectionsComponent } from './collections/collections.component';
 import { deactiveAuthGuard } from './deactive-auth.guard';
 import { childAuthGuard } from './child-auth.guard';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {path:'',redirectTo:"Ecommerce", pathMatch:"full"},
   {path:"Ecommerce",component:EcommComponent},
   {path:"SignIn",component:SignInComponent,canDeactivate:[deactiveAuthGuard]},
   {path:"SignUp",component:SignUpComponent}, 
+  {path:"cart",component:CartComponent}, 
   {path:"Products",component:ProductsListComponent,canActivate:[authGuard]},
   // {
   //   path:"products-mfe",

@@ -13,6 +13,7 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import { CollectionsComponent } from './collections/collections.component';
 import { ShopsComponent } from './shops/shops.component';
 import { TrendingComponent } from './trending/trending.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TrendingComponent } from './trending/trending.component';
     ProductsListComponent,
     CollectionsComponent,
     ShopsComponent,
-    TrendingComponent
+    TrendingComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

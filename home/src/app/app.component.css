@@ -3,20 +3,36 @@
 }
 
 .custom__side-nav-max-width{
-    width: fit-content;
+    width: 200px;
     height:100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: inset -4px 2px 8px rgb(14, 14, 14, 0.3); 
+    box-shadow: inset -4px 2px 8px rgb(14, 14, 14, 0.3);
+    position: fixed;
     
 }
 
 .content{
     flex:1;
     background: #a4b8cd;
+    margin-left: 200px;
+    
 }
 
 .dds__side-nav__menu{
     display: fixed;
+}
+
+.dds__side-nav__item a:hover {
+    background-color: #e1e1e1;
+
+}
+
+.dds__side-nav__item--selected{
+    background-color: #d9f5fd;
+}
+
+.dds__side-nav__item--selected a:hover { 
+    background-color: #d9f5fd;
 }

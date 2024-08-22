@@ -1,0 +1,28 @@
+<div class="flexcards">
+    <ng-container *ngFor="let data of cartArr">
+        <ng-container >
+            <div class="dds__card" *ngIf=data.inCart>
+                <div class="dds__card__media">
+                    <img style="border:white 10px"
+                        src="{{data.image}}"
+                        alt="{{data.title}}"
+                    />
+                </div>
+                <div class="dds__card__content">
+                    <div class="dds__card__header">
+                        
+                        <span class="dds__card__header__text">
+                        <h5 class="dds__card__header__title">{{data.title}}</h5>
+                        <span class="dds__card__header__subtitle">{{data.category}}</span>
+                        </span>
+                    </div>
+                <div class="dds__card__body">{{data.description}}</div>
+                    <div class="dds__card__footer">
+                        <button  (click)="removeFromCart(data)" class="dds__button dds__button--primary dds__button--sm dds__card__footer__item" type="button">Remove</button>                    </div>
+                </div>
+            </div>
+                   
+        </ng-container>
+    </ng-container>
+    
+</div>

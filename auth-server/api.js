@@ -153,6 +153,48 @@ router.get("/productData",verifyToken, (req,res)=>{
     })
 });
 
+//endpoint to update the incart product property
+router.put("/updateCart/:id",verifyToken,(req,res)=>{
+
+    //first read the existing file
+    fs.readFile("products.json","utf-8",(err,data)=>{
+        //first get the product id from req
+        const productId=parseInt(req.params.id);
+        const { inCart } = req.body;
+
+
+        //check if there is any error
+        if(err){
+            res.status(500).send(err);
+            return;
+        }
+
+        //if error is not there, update the json file
+        //parse the data first
+        let products=JSON.parse(data);
+
+        //find the product for which you have to update the incart value
+        let product=products.find(p=>p.id=== productId);
+
+        if (!product)
+        {
+            res.status(404).send("Product Not Found");
+            return;
+        }
+
+        product.inCart=inCart;
+
+        //Update the file
+        fs.writeFile("products.json",JSON.stringify(products,null,2), (err)=>{
+            if (err){
+                res.status(500).send(err);
+                return;
+            }
+            res.status(200).send(product);
+        });
+
+    });
+});
 
 function verifyToken(req,res, next)
 {

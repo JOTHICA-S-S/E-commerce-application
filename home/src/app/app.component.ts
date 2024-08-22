@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from './auth.service';
+import { NavigateService } from './navigate.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { AuthService } from './auth.service';
 export class AppComponent implements OnInit {
   title = 'home';
 
+  productInCart=0;
   selectedItem:string='';
   ngOnInit(): void {
     //used for routes when initialized, not required as we are redirecting from beggining
@@ -28,10 +30,16 @@ export class AppComponent implements OnInit {
           console.log(event);
         }
     })
+
+
+    //subscribe to the behavioursubject for count in navservice and updated in producst-list componenet
+    this.navser.cartCounted.subscribe(
+      count=>this.productInCart=count
+    );
     
   }
 
-  constructor(private router:Router, public authService:AuthService){}
+  constructor(private router:Router, public authService:AuthService,private navser:NavigateService){}
  
 
   setselectedItem(url:string)
@@ -46,6 +54,8 @@ export class AppComponent implements OnInit {
       this.selectedItem="Products";
     else if(url.includes("Trending"))
       this.selectedItem="Trending";
+    else if(url.includes("cart"))
+      this.selectedItem="cart";
   }
  
   signOut()

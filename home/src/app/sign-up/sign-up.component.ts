@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { NavigateService } from '../navigate.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,7 +11,8 @@ import { Router } from '@angular/router';
 export class SignUpComponent {
   userData={email:"",password:"", role:"", gender:""};
 
-constructor(private authservice:AuthService, private route:Router){}
+  constructor(private authservice:AuthService,private navserv:NavigateService, private route:Router){}
+
 
   showPassword:boolean=false;
 
@@ -27,6 +29,7 @@ constructor(private authservice:AuthService, private route:Router){}
             console.log(res);
             localStorage.setItem("token",res.token);
             this.route.navigate(["/Products"]);
+            this.navserv.setRole(this.userData.role);
             
         },
         error: err=>{

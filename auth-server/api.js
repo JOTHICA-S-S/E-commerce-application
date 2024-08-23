@@ -44,7 +44,7 @@ router.post("/signUp",(req,res)=>{
         //if there is any
         // err, we will send the error to front end and stop the execution.
         if(err){
-            res.send(err);
+            res.status(500).send("error while reading the file");
             return;
         }
 
@@ -61,7 +61,7 @@ router.post("/signUp",(req,res)=>{
 
         if(isUserPresent)
         {
-            res.send("user already exists");
+            res.status(409).send("user already exists");
             return;
         }
 
@@ -71,7 +71,7 @@ router.post("/signUp",(req,res)=>{
         const content=JSON.stringify(dataArr);
         fs.writeFile("data.json", content, err=>{
             if(err){
-                res.send(err);
+                res.status(500).send("error while writing in file");
                 return;
             }
 
@@ -101,13 +101,13 @@ router.post("/signIn",(req,res)=>{
 
         if(err)
         {
-            res.send(err);
+            res.status(500).send("error while reading the file");;
             return;
         }
 
         if(!data)
         {
-            res.send("user data not found");
+            res.status(404).send("user data not found");
             return;
         }
 
@@ -115,7 +115,7 @@ router.post("/signIn",(req,res)=>{
        const isUserPresent=dataArr?.some(dataObj=>dataObj.email===userData.email);
 
        if(!isUserPresent){
-        res.send("User email does not exist");
+        res.status(404).send("User email does not exist");
         return;
        }
 
@@ -123,7 +123,7 @@ router.post("/signIn",(req,res)=>{
        
        if (!isCorrectPassword)
        {
-        res.send("Incorrect password");
+        res.status(401).send("Incorrect password");
         return;
        }
        let payload={
@@ -165,7 +165,7 @@ router.put("/updateCart/:id",verifyToken,(req,res)=>{
 
         //check if there is any error
         if(err){
-            res.status(500).send(err);
+            res.status(500).send("error while reading the file");
             return;
         }
 
@@ -185,12 +185,12 @@ router.put("/updateCart/:id",verifyToken,(req,res)=>{
         product.inCart=inCartValue;
 
         //Update the file
-        fs.writeFile("products.json",JSON.stringify(products,null,2), (err)=>{
+        fs.writeFile("products.json",JSON.stringify(products), (err)=>{
             if (err){
-                res.status(500).send(err);
+                res.send(err);
                 return;
             }
-            res.status(200).send(product);
+            res.status(500).send("error while writing the file");
         });
 
     });
@@ -201,7 +201,7 @@ function verifyToken(req,res, next)
     //checking whther the request headers has authorization key or not
     if(!req.headers.authorization)
     {
-        res.send("unathorized request");
+        res.status(404).send("unathorized request");
     }
 
     //if it has authorization key, then we are getting the token from the key by splitting it
@@ -210,13 +210,13 @@ function verifyToken(req,res, next)
     // if the token which we split is null, then unauthorized access,
     if (token==='null')
     {
-        res.send("unathorized request");
+        res.status(404).send("unathorized request");
     }
 
     //if, token is present, then we have to verify the token using payload, using verify method of jwt
     let payload=jwt.verify(token,"test");
     if(!payload){
-        res.send("unathorized request");
+        res.status(404).send("unathorized request");
     }
 
     //if payload is present , then we have to call the next method, that, is the products api call can be continued

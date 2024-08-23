@@ -37,8 +37,8 @@ export class NavigateService {
      return this.http.get<any>(this.productsData);
   }
 
-  updateCart(productId:number,inCart:boolean):Observable<any>{
-    return this.http.put(`${this.updateCartUrl}/${productId}`,{inCart});
+  updateCart(productId:number,inCartValue:boolean):Observable<any>{
+    return this.http.put(`${this.updateCartUrl}/${productId}`,{inCart:inCartValue}, {headers:{'content-Type':'application/json'}});
   }
 
 

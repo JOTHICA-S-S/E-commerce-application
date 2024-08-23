@@ -160,7 +160,7 @@ router.put("/updateCart/:id",verifyToken,(req,res)=>{
     fs.readFile("products.json","utf-8",(err,data)=>{
         //first get the product id from req
         const productId=parseInt(req.params.id);
-        const { inCart } = req.body;
+        const inCartValue = req.body.inCart;
 
 
         //check if there is any error
@@ -182,7 +182,7 @@ router.put("/updateCart/:id",verifyToken,(req,res)=>{
             return;
         }
 
-        product.inCart=inCart;
+        product.inCart=inCartValue;
 
         //Update the file
         fs.writeFile("products.json",JSON.stringify(products,null,2), (err)=>{
@@ -220,6 +220,7 @@ function verifyToken(req,res, next)
     }
 
     //if payload is present , then we have to call the next method, that, is the products api call can be continued
+    res.send("authorized acces, showing products")
     next();
 }
 

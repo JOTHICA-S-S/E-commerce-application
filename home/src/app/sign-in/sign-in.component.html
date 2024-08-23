@@ -1,3 +1,23 @@
+<div *ngIf="errorText"  #messageBar
+  id="messagebar-294578723"
+  data-dds="message-bar"
+  class="dds__message-bar"
+  role="dialog"
+  aria-describedby="message-bar-content-220378699"
+  aria-labelledby="message-bar-title-220378699"
+  data-dismissible="true"
+>
+  <span class="dds__icon dds__icon--alert-info-cir dds__message-bar__icon" aria-hidden="true"></span>
+
+  <div id="message-bar-content-220378699" class="dds__message-bar__content">
+    {{errorText}}
+  </div>
+
+    <span class="dds__icon dds__icon--close-cir dds__message-bar__icon" aria-hidden="true" focusable="false" (click)="closeMessageBar()">
+    </span>
+
+</div>
+
 <form id="sign-in-290649572" data-dds="form" class="dds__form">
     <div class="dds__container__modified">
       <fieldset class="dds__form__section">

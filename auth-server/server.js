@@ -26,7 +26,9 @@ APP.use("/api",api);
 
 APP.get("/",(req, res)=>{
     res.send("Hello server!");
-})
+});
+
+
 
 //we have to listen to the server that is running
 //the second parameter(anonymous function) is optional to log the port info in the console

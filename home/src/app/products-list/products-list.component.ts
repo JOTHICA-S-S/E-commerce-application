@@ -98,7 +98,10 @@ export class ProductsListComponent implements OnInit {
   addToCart(product:any)
   {
     product.inCart=true;
-    this.navService.updateCart(product.id,true).subscribe();
+    this.navService.updateCart(product.id,true).subscribe(
+      
+      res=>console.log(`res from add to cart ${JSON.stringify(res)}`)
+    );
     this.cartCountComp=this.cartCountComp+1;
     this.navService.cartCount.next(this.cartCountComp);
     console.log(`count after added is ${this.cartCountComp}`);

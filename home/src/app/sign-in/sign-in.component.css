@@ -1,15 +1,19 @@
 .dds__form{
     display:flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     height:100vh;
-}
+    background-image: url('src/assets/Here image.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;}
 
 .dds__container__modified
 {
     background-color: #f5f6f7;
     padding:40px;
     width:fit-content;
+    margin-right: 100px;
+    height:fit-content;
 }
 
 .dds__h3
@@ -30,6 +34,19 @@
     height:38px;
 }
 
+.messagebar{
+    display: grid;
+    place-items: center;
+}
+
 .dds__message-bar{
+    position: fixed;
     width:500px;
+    top:20px;
+   
+}
+
+
+.dds__input-text__container{
+    margin-top: 20px;
 }

@@ -14,6 +14,8 @@ import { CollectionsComponent } from './collections/collections.component';
 import { ShopsComponent } from './shops/shops.component';
 import { TrendingComponent } from './trending/trending.component';
 import { CartComponent } from './cart/cart.component';
+import { HomeComponent } from './home/home.component';
+import { StartComponent } from './start/start.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { CartComponent } from './cart/cart.component';
     CollectionsComponent,
     ShopsComponent,
     TrendingComponent,
-    CartComponent
+    CartComponent,
+    HomeComponent,
+    StartComponent
   ],
   imports: [
     BrowserModule,

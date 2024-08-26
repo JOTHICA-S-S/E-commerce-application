@@ -1,0 +1,35 @@
+
+.container{
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    height:100vh;
+    background-image: url('src/assets/Here image.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card{
+    margin-right: 100px;
+
+}
+
+.header{
+    color: #0e0e0e;
+    text-align: right;
+    font-weight:bolder;
+    font-size: 40px;
+    line-height: 48px;
+    margin-bottom: 40px;
+    font-family: 'Castellar';
+}
+
+.content
+{
+    background-color:rgba(245, 246, 247, 0.5);
+    color:#0e0e0e;
+    text-align: center;
+    padding:20px;
+    border-radius: 4px;
+}
+

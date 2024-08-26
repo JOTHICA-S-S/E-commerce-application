@@ -9,7 +9,8 @@
             <p class="signUp">Don't have an account ? <a routerLink="/SignUp">sign Up</a></p>
         </div>
         <div class="content" *ngIf="authService.isAuthenticated()">
-            <p class="signIn">View All <a routerLink="/Products">Products</a></p>
+            <span class="signIn">View All <a routerLink="/home/Products">Products</a></span><span> and </span>
+            <span class="signIn"><a routerLink="/home/Trending/shops">Trending Items</a></span> here !
         </div>
     </div>
     

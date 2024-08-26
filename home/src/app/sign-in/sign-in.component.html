@@ -1,22 +1,25 @@
-<div *ngIf="errorText"  #messageBar
-  id="messagebar-294578723"
-  data-dds="message-bar"
-  class="dds__message-bar"
-  role="dialog"
-  aria-describedby="message-bar-content-220378699"
-  aria-labelledby="message-bar-title-220378699"
-  data-dismissible="true"
->
-  <span class="dds__icon dds__icon--alert-info-cir dds__message-bar__icon" aria-hidden="true"></span>
+<div class="messagebar">
+    <div *ngIf="showBar"  
+    id="messagebar-294578723"
+    data-dds="message-bar"
+    class="dds__message-bar"
+    role="dialog"
+    aria-describedby="message-bar-content-220378699"
+    aria-labelledby="message-bar-title-220378699"
+  >
+    <span class="dds__icon dds__icon--alert-info-cir dds__message-bar__icon" aria-hidden="true"></span>
 
-  <div id="message-bar-content-220378699" class="dds__message-bar__content">
-    {{errorText}}
+    <div id="message-bar-content-220378699" class="dds__message-bar__content">
+      {{errorText}}
+    </div>
+
+      <span class="dds__icon dds__icon--close-cir dds__message-bar__icon" aria-hidden="true" focusable="false" (click)="closeMessageBar()">
+      </span>
+
   </div>
-
-    <span class="dds__icon dds__icon--close-cir dds__message-bar__icon" aria-hidden="true" focusable="false" (click)="closeMessageBar()">
-    </span>
-
 </div>
+
+
 
 <form id="sign-in-290649572" data-dds="form" class="dds__form">
     <div class="dds__container__modified">
@@ -26,18 +29,6 @@
           <div class="dds__col--1 dds__col--sm-3">
             <span class="dds__body-2 dds__form__section">Don't have an account?&nbsp;</span>
             <a class="" id="link-id-259781484" routerLink="/SignUp">Create account</a>
-            <div class="dds__form__field">
-              <div
-                id="message-bar-container-320808709"
-                data-dds="message-bar"
-                class="dds__message-bar dds__message-bar--error dds__message-bar--hide"
-                role="dialog"
-                aria-describedby="message-bar-content-320808709"
-              >
-                <span class="dds__icon dds__icon--alert-error dds__message-bar__icon" aria-hidden="true"></span>
-                <div id="message-bar-content-320808709" class="dds__message-bar__content"></div>
-              </div>
-            </div>
             <div class="dds__form__section">
               <div class="dds__form__field" >
                 <div id="text-input-container-848483597" class="dds__input-text__container">
@@ -58,7 +49,7 @@
                 </div>
               </div>
 
-              <div class="dds__form__field">
+              
                 <div id="inputpassword-container-187365590" class="dds__input-text__container">
                   <label id="inputpassword-label-187365590" for="inputpassword-187365590" class="dds__label dds__label--required">
                     Password
@@ -78,7 +69,7 @@
                     />
                     <div id="inputpassword-feedback-187365590" class="dds__invalid-feedback">Enter a password to continue</div>
                   </div>
-                </div>
+                
               </div>
             </div>
             <div class="dds__form__section" (click)="signIn()">

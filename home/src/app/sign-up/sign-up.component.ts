@@ -28,7 +28,7 @@ export class SignUpComponent {
         next:res=>{
             console.log(res);
             localStorage.setItem("token",res.token);
-            this.route.navigate(["/Products"]);
+            this.route.navigate(["/home/Products"]);
             this.navserv.setRole(this.userData.role);
             
         },

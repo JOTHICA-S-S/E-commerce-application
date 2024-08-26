@@ -7,29 +7,20 @@ import { Router } from '@angular/router';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
-export class SignInComponent implements OnInit{
-  @ViewChild ('messageBar') messageBar!:ElementRef<HTMLElement>;
-  messageBarInstance:any;
+export class SignInComponent{
   userData={email:"",password:""};
 
   showPassword:boolean=false;
   isSubmitting:boolean=false;
   errorText:string='';
+  showBar:boolean=false;
 
 
   constructor(private authService:AuthService, private route:Router){}
 
-  ngOnInit(): void {
-      const element = document.getElementById("messagebar-294578723");
-      DDS.MessageBar(element, { timer: true, timerDuration: 40 });
-        
-    
-  }
 
-  ngAfterViewInit()
-  {
-    this.messageBarInstance =new DDS.MessageBar(this.messageBar.nativeElement);
-  }
+
+ 
 
   togglePasswordVisibility()
   {
@@ -42,13 +33,13 @@ export class SignInComponent implements OnInit{
         next:res=>{
             console.log(`res for signIn is ${JSON.stringify(res)}`);
             localStorage.setItem("token",res.token);
-            this.route.navigate(["/Products"]);
+            this.route.navigate(["/home/Products"]);
             this.isSubmitting=true;
         }
         ,
         error:err=>{
-          this.messageBar.nativeElement.style.display = 'block';
-
+          
+          this.showBar = true;
           console.log(`erroer while suigning in ${err.error}`);
           console.log(`status code ${err.status}`);
           console.log(`error  ${JSON.stringify(err)}`);
@@ -58,7 +49,10 @@ export class SignInComponent implements OnInit{
           }
           else{
             this.errorText = err.error||'Unknown error occoured';
+
           }
+          this.userData.email='';
+          this.userData.password='';
         }
       })
   }
@@ -66,7 +60,8 @@ export class SignInComponent implements OnInit{
 
   closeMessageBar()
   {
-      this.messageBarInstance.nativeElement.style.display = 'none';
+    
+      this.showBar = false;
   }
 
 

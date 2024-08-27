@@ -10,3 +10,34 @@
     max-width: 360px;
     padding: 10px 10px 0px 10px;
 }
+
+.emptyDiv{
+    display:flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    height:100vh;
+
+}
+
+.empty{
+    
+    display:flex;
+    flex-flow:column ;
+    align-items: center;
+    justify-content: center;
+    margin:auto;
+    background-color: white;
+    padding:40px;
+    border-radius: 4px;
+}
+
+.empty p{
+    color: #0e274b;
+    font-weight: 900;
+    font-size: 44px;
+}
+
+.flexcards{
+    min-height:100vh;
+}

@@ -62,7 +62,7 @@ export class NavigateService {
     const body={email};
     console.log(`from service adding product in cart`);
     
-    return this.http.put<any>(`${this.UpdateUsercart}/${productId}`,{body});
+    return this.http.put<any>(`${this.UpdateUsercart}/${productId}`,body);
   }
 
   removeFromUserCart(productId:string){

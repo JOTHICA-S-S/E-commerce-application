@@ -60,6 +60,7 @@ export class HomeComponent implements OnInit{
   signOut()
   {
       localStorage.removeItem("token");
+localStorage.removeItem("emailLogged");
       this.router.navigate(["/SignIn"]);
   }
 }

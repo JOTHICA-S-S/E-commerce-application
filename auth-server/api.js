@@ -154,47 +154,47 @@ router.get("/productData",verifyToken, (req,res)=>{
 });
 
 //endpoint to update the incart product property
-router.put("/updateCart/:id",verifyToken,(req,res)=>{
+// router.put("/updateCart/:id",verifyToken,(req,res)=>{
 
-    //first read the existing file
-    fs.readFile("products.json","utf-8",(err,data)=>{
-        //first get the product id from req
-        const productId=parseInt(req.params.id);
-        const inCartValue = req.body.inCart;
+//     //first read the existing file
+//     fs.readFile("products.json","utf-8",(err,data)=>{
+//         //first get the product id from req
+//         const productId=parseInt(req.params.id);
+//         const inCartValue = req.body.inCart;
 
 
-        //check if there is any error
-        if(err){
-            res.status(500).send("error while reading the file");
-            return;
-        }
+//         //check if there is any error
+//         if(err){
+//             res.status(500).send("error while reading the file");
+//             return;
+//         }
 
-        //if error is not there, update the json file
-        //parse the data first
-        let products=JSON.parse(data);
+//         //if error is not there, update the json file
+//         //parse the data first
+//         let products=JSON.parse(data);
 
-        //find the product for which you have to update the incart value
-        let product=products.find(p=>p.id=== productId);
+//         //find the product for which you have to update the incart value
+//         let product=products.find(p=>p.id=== productId);
 
-        if (!product)
-        {
-            res.status(404).send("Product Not Found");
-            return;
-        }
+//         if (!product)
+//         {
+//             res.status(404).send("Product Not Found");
+//             return;
+//         }
 
-        product.inCart=inCartValue;
+//         product.inCart=inCartValue;
 
-        //Update the file
-        fs.writeFile("products.json",JSON.stringify(products), (err)=>{
-            if (err){
-                res.send(err);
-                return;
-            }
-            res.status(500).send("error while writing the file");
-        });
+//         //Update the file
+//         fs.writeFile("products.json",JSON.stringify(products), (err)=>{
+//             if (err){
+//                 res.send(err);
+//                 return;
+//             }
+//             res.status(200).send("Added to cart");
+//         });
 
-    });
-});
+//     });
+// });
 
 function verifyToken(req,res, next)
 {
@@ -224,5 +224,99 @@ function verifyToken(req,res, next)
     next();
 }
 
+
+router.put("/addToCart/:productId",verifyToken,(req,res)=>{
+    let userEmail=req.body.email;
+    const productID=String(req.params.productId);
+    fs.readFile("data.json","utf-8",(err,data)=>{
+        if(err){
+            res.status(500).send("error while reading the file");
+            return;
+        }
+        let users=JSON.parse(data);
+        let user=users.find(u=>u.email===userEmail);
+
+        if (!user){
+            res.status(404).send("user not found");
+            return;
+        }
+
+        user.cart.push({productID});
+
+        //Update the file
+        fs.writeFile("data.json",JSON.stringify(users), (err)=>{
+            if (err){
+                res.send(err);
+                return;
+            }
+            res.status(200).send("Added to user's cart succesfully");
+        });
+    })
+
+
+});
+
+router.delete("/removeFromCart/:productId",verifyToken,(req,res)=>{
+    let userEmail=req.body.email;
+    const productID=String(req.params.productId);
+    fs.readFile("data.json","utf-8",(err,data)=>{
+        if(err){
+            res.status(500).send("error while reading the file");
+            return;
+        }
+        let users=JSON.parse(data);
+        let user=users.find(u=>u.email===userEmail);
+
+        if (!user){
+            res.status(404).send("user not found");
+            return;
+        }
+        
+       const productIndex=user.cart.findIndex(product=>product.productID===productID);
+
+        if (productIndex===-1){
+            res.send("product not in cart");
+        }
+
+        user.cart.splice(productIndex,1);
+
+        //Update the file
+        fs.writeFile("data.json",JSON.stringify(users), (err)=>{
+            if (err){
+                res.send(err);
+                return;
+            }
+            res.status(200).send("removed from user's cart succesfully");
+        });
+    })
+});
+
+router.get("/cart",verifyToken,(req,res)=>{
+    let userEmail=req.query.email;
+    fs.readFile("data.json","utf-8",(err,data)=>{
+        if(err){
+            res.status(500).send("error while reading cart details");
+        }
+
+        let userArr=JSON.parse(data);
+        let user=userArr.find(user=>user.email===userEmail);
+        if (!user){
+            res.send("user not found");
+        }
+        let cartArr=user.cart;
+        res.send(cartArr);
+    });
+});
+
+
+router.get("/userData",(req,res)=>{
+    fs.readFile("data.json","utf-8",(err,data)=>{
+        if(err){
+            res.send("error while reading user data");
+        }
+        let userArr=JSON.parse(data);
+        res.send(userArr);
+    })
+});
 //exporting the routing using module.exports
 module.exports=router;

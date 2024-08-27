@@ -73,6 +73,7 @@
     </div>
 
     <div class="dds__tabs__pane-container">
+
       <div id="tab-0-pane" class="dds__tabs__pane" role="tabpanel" tabindex="0" aria-hidden="false" aria-labelledby="tab-0">
         <div class="flexcards">
             <div class="dds__card" *ngFor="let data of productsData">
@@ -94,8 +95,8 @@
                     <div class="dds__card__body">{{data.description}}</div>
                     <div class="dds__card__footer">
                         
-                        <button *ngIf="!data.inCart" (click)="addToCart(data)" class="dds__button dds__button--secondary dds__button--sm dds__card__footer__item" type="button">Add to cart</button>
-                        <button *ngIf="data.inCart" (click)="removeFromCart(data)" class="dds__button dds__button--primary dds__button--sm dds__card__footer__item" type="button">Added to cart</button>
+                        <button  (click)="AddProductToUserCart(data)" class="dds__button dds__button--secondary dds__button--sm dds__card__footer__item" type="button">Add to cart</button>
+                        <button  (click)="RemoveProductFromUserCart(data)" class="dds__button dds__button--primary dds__button--sm dds__card__footer__item" type="button">Added to cart</button>
 
                     </div>
                     </div>
@@ -125,8 +126,8 @@
                             </div>
                         <div class="dds__card__body">{{data.description}}</div>
                             <div class="dds__card__footer">                        
-                              <button *ngIf="!data.inCart" (click)="addToCart(data)" class="dds__button dds__button--secondary dds__button--sm dds__card__footer__item" type="button">Add to cart</button>
-                              <button *ngIf="data.inCart" (click)="removeFromCart(data)" class="dds__button dds__button--primary dds__button--sm dds__card__footer__item" type="button">Added to cart</button>
+                              <button *ngIf="!data.inCart" (click)="AddProductToUserCart(data)" class="dds__button dds__button--secondary dds__button--sm dds__card__footer__item" type="button">Add to cart</button>
+                              <button *ngIf="data.inCart" (click)="RemoveProductFromUserCart(data)" class="dds__button dds__button--primary dds__button--sm dds__card__footer__item" type="button">Added to cart</button>
                             </div>
                         </div>
                     </div>
@@ -160,8 +161,8 @@
                         <div class="dds__card__body">{{data.description}}</div>
                             <div class="dds__card__footer">
                                 
-                              <button *ngIf="!data.inCart" (click)="addToCart(data)" class="dds__button dds__button--secondary dds__button--sm dds__card__footer__item" type="button">Add to cart</button>
-                              <button *ngIf="data.inCart" (click)="removeFromCart(data)" class="dds__button dds__button--primary dds__button--sm dds__card__footer__item" type="button">Added to cart</button>                                  </div>
+                              <button *ngIf="!data.inCart" (click)="AddProductToUserCart(data)" class="dds__button dds__button--secondary dds__button--sm dds__card__footer__item" type="button">Add to cart</button>
+                              <button *ngIf="data.inCart" (click)="RemoveProductFromUserCart(data)" class="dds__button dds__button--primary dds__button--sm dds__card__footer__item" type="button">Added to cart</button>                                  </div>
                         </div>
                     </div>
                            
@@ -193,8 +194,8 @@
                         <div class="dds__card__body">{{data.description}}</div>
                             <div class="dds__card__footer">
                                 
-                              <button *ngIf="!data.inCart" (click)="addToCart(data)" class="dds__button dds__button--secondary dds__button--sm dds__card__footer__item" type="button">Add to cart</button>
-                              <button *ngIf="data.inCart" (click)="removeFromCart(data)" class="dds__button dds__button--primary dds__button--sm dds__card__footer__item" type="button">Added to cart</button>
+                              <button *ngIf="!data.inCart" (click)="AddProductToUserCart(data)" class="dds__button dds__button--secondary dds__button--sm dds__card__footer__item" type="button">Add to cart</button>
+                              <button *ngIf="data.inCart" (click)="RemoveProductFromUserCart(data)" class="dds__button dds__button--primary dds__button--sm dds__card__footer__item" type="button">Added to cart</button>
                                   </div>
                         </div>
                     </div>
@@ -209,6 +210,7 @@
         
             <div class="dds__table" role="table" id="table-998110420"></div>
       </div>
+
     </div>
   </div>
   

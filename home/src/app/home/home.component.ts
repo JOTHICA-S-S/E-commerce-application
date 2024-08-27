@@ -10,27 +10,27 @@ import { NavigateService } from '../navigate.service';
 })
 export class HomeComponent implements OnInit{
   productInCart=0;
-  selectedItem:string='Products';
-  constructor(private router:Router, public authService:AuthService,private navser:NavigateService){}
-
+  selectedItem:string='';
+  constructor(private router:Router, public authService:AuthService,private navser:NavigateService){
+    this.router.events.subscribe(
+      event=>{
+           //NavigationEnd is the event that gets triggered when the routing is done
+           //So need to check whether the event we captured is instance of navigation url
+           //intancece of mean, checking whther the created one is of same type or cerated from same class deriving same properties.
+           if(event instanceof NavigationEnd)
+           {
+             this.setselectedItem(event.urlAfterRedirects);
+             console.log(event.urlAfterRedirects);
+             console.log(event);
+           }
+       })
+  }
+ 
+  
   ngOnInit(): void {
     //used for routes when initialized, not required as we are redirecting from beggining
     // this.setselectedItem(this.router.url);
     // console.log( this.router);
-
-    this.router.events.subscribe(
-   event=>{
-        //NavigationEnd is the event that gets triggered when the routing is done
-        //So need to check whether the event we captured is instance of navigation url
-        //intancece of mean, checking whther the created one is of same type or cerated from same class deriving same properties.
-        if(event instanceof NavigationEnd)
-        {
-          this.setselectedItem(event.urlAfterRedirects);
-          console.log(event.urlAfterRedirects);
-          console.log(event);
-        }
-    })
-
 
     //subscribe to the behavioursubject for count in navservice and updated in producst-list componenet
     this.navser.cartCounted.subscribe(

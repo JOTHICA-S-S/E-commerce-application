@@ -8,6 +8,7 @@ export class AuthService {
   SignUpUrl="http://localhost:8080/api/signUp";
   SignInUrl="http://localhost:8080/api/signIn";
 
+
   constructor(private http:HttpClient) { }
 
   signUp(userData:any)
@@ -16,7 +17,7 @@ export class AuthService {
   }
 
   signIn(userData:any)
-  {
+  {  localStorage.setItem("emailLogged",userData.email)
      return this.http.post<any>(this.SignInUrl,userData);
   }
 

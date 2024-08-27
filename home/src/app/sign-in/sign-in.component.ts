@@ -14,7 +14,7 @@ export class SignInComponent{
   isSubmitting:boolean=false;
   errorText:string='';
   showBar:boolean=false;
-
+  
 
   constructor(private authService:AuthService, private route:Router){}
 
@@ -48,7 +48,7 @@ export class SignInComponent{
             this.errorText="Please enter the credentials"
           }
           else{
-            this.errorText = err.error||'Unknown error occoured';
+            this.errorText = JSON.stringify(err.error)||'Unknown error occoured';
 
           }
           this.userData.email='';

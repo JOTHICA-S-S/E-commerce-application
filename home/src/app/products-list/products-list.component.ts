@@ -95,28 +95,47 @@ export class ProductsListComponent implements OnInit {
         });
       }
 
-  addToCart(product:any)
-  {
-    product.inCart=true;
-    this.navService.updateCart(product.id,true).subscribe(
-      
-      res=>console.log(`res from add to cart ${JSON.stringify(res)}`)
-    );
-    this.cartCountComp=this.cartCountComp+1;
-    this.navService.cartCount.next(this.cartCountComp);
-    console.log(`count after added is ${this.cartCountComp}`);
+  // addToCart(product:any)
+  // {
+  //   product.inCart=true;
 
-  }
+  //   //updating cart value in products 
+  //   // this.navService.updateCart(product.id,true).subscribe(
+  //   //   res=>console.log(`res from add to cart ${JSON.stringify(res)}`)
+  //   // );
 
-  removeFromCart(product:any)
-  {
-    product.inCart=false;
-    this.navService.updateCart(product.id,false).subscribe();
-    this.cartCountComp=this.cartCountComp-1;
-    this.navService.cartCount.next(this.cartCountComp);
-    console.log(`count after removed is ${this.cartCountComp}`);
-    
-  }
+  //   this.navService.updateCart_user(product.id).subscribe(
+  //     res=>console.log(`res after adding cart to user ${JSON.stringify(res)}`)
+  //   );
+
+  //   this.cartCountComp=this.cartCountComp+1;
+  //   this.navService.cartCount.next(this.cartCountComp);
+  //   console.log(`count after added is ${this.cartCountComp}`);
+
+  // }
+
+  //updating boolean value in products database which is not correct approach
+  // removeFromCart(product:any)
+  // {
+  //   product.inCart=false;
+  //   this.navService.updateCart(product.id,false).subscribe();
+  //   this.cartCountComp=this.cartCountComp-1;
+  //   this.navService.cartCount.next(this.cartCountComp);
+  //   console.log(`count after removed is ${this.cartCountComp}`);
+  // }
   
+
+  AddProductToUserCart(data:any){
+    console.log(`in added to cart`);
+    
+    this.navService.AddToUserCart((data.id)).subscribe(res=>
+      console.log(`res from product compoenent ${res}`));
+  }
+
+  RemoveProductFromUserCart(data:any){
+    this.navService.removeFromUserCart(data.id).subscribe(res=>
+      console.log(`res from product compoenent ${res}`)
+    );
+  }
 }
 

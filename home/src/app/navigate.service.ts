@@ -13,21 +13,22 @@ export class NavigateService {
   UpdateUsercart="http://localhost:8080/api/addToCart";
 
  removeUrl="http://localhost:8080/api/removeFromCart";
+
+ cartArr:any=[];
+count:any;
   
   role:string='';
 
-  constructor(private http:HttpClient, private authServ:AuthService) { }
+  constructor(private http:HttpClient, private authServ:AuthService) { 
+   
+  }
   
 
   public cartCount = new BehaviorSubject<number>(0);
 
   cartCounted=this.cartCount.asObservable();
 
-  addCount(count:number)
-  {
-    this.cartCount.next(count);
-  }
-
+ 
   setRole(role:string)
   {
     this.role=role;

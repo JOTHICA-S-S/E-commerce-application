@@ -10,18 +10,27 @@ import { Router } from '@angular/router';
 export class CartComponent implements OnInit{
 
   userCartArr:any=[];
-  cartCountComp:number=0;
+  cartArr:any=[];
+ 
   productsArr:any=[];
   productsInCartArr:any=[];
   isCartEmpty:boolean=false;
-  
+  count:any;
 
   constructor(private navServ:NavigateService,private route:Router){}
 
   ngOnInit()
   {
     this.getProducts();
-    
+    this.navServ.getUserCart().subscribe({
+      next:(res)=>{
+        this.cartArr=res;
+        console.log(`cart array is ${JSON.stringify(this.cartArr)}`);
+        console.log(`the cart length is ${this.cartArr.length}`);
+        this.count=this.cartArr.length;         
+        }
+    });
+   
   }
 
   getInCart()
@@ -100,15 +109,13 @@ export class CartComponent implements OnInit{
   //removing product Id from the cart property in user database
   
   RemoveProductFromUserCart(data:any){
-    this.navServ.removeFromUserCart(data.id).subscribe({
-      next:(res)=>{
-                console.log(res);
-                
-      }
+    this.navServ.removeFromUserCart(data.id).subscribe();    
+      this.getProducts();
+      this.count--;
+      this.navServ.cartCount.next(this.count);
+      
     }
-    );
-    this.getProducts();
-    
-  }
+  
+  
 
 }

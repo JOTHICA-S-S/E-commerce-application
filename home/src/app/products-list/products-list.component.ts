@@ -23,7 +23,7 @@ export class ProductsListComponent implements OnInit {
           res=>
             this.cartCountComp=res
         );
-        console.log("incartcomp");
+        //console.log("incartcomp");
         
        }
 
@@ -39,8 +39,8 @@ export class ProductsListComponent implements OnInit {
                 // console.log(res);
                 this.productsData=res;
                 this.processData(res);
-                console.log("inside get");
-                console.log(this.productsData);  
+                // console.log("inside get");
+                // console.log(this.productsData);  
                 
             },
             error: err=>{
@@ -57,7 +57,7 @@ export class ProductsListComponent implements OnInit {
       processData(response: any[]){
         // Getting the keys of the first object in teh array as all objects has similar keys
         const keys = Object.keys(response[0]);
-        console.log("entered processData");
+        // console.log("entered processData");
         // console.log(Object.keys(response[0]));
         // console.log(response[0]);
         // console.log("keys : "+keys);
@@ -66,8 +66,8 @@ export class ProductsListComponent implements OnInit {
         
         // Creating columns array from keys
         this.columns = keys.map(key => ({ value: key}));
-        console.log(this.columns);
-        console.log("keys after mapping : "+keys);
+        // console.log(this.columns);
+        // console.log("keys after mapping : "+keys);
         
         
         // Creating data array as per the template
@@ -78,16 +78,16 @@ export class ProductsListComponent implements OnInit {
               
           
         }});
-        console.log("data is");
+        // console.log("data is");
         
-        console.log(this.data);
+        // console.log(this.data);
         
         this.initializeTable();
       }
 
       initializeTable() {
         const element = document.getElementById("table-998110420");
-        console.log("entered table initialization");
+        // console.log("entered table initialization");
 
         DDS.Table(element, {
           data:this.data,

@@ -30,7 +30,7 @@ export class CartComponent implements OnInit{
         next:res=>{
             
             this.userCartArr=res;
-            console.log(`userCartArr is ${JSON.stringify(this.userCartArr)}`);
+            // console.log(`userCartArr is ${JSON.stringify(this.userCartArr)}`);
             this.getProductsInCart();
             
         },
@@ -46,9 +46,9 @@ export class CartComponent implements OnInit{
   this.navServ.getProducts().subscribe({
     next:res=>{
       this.productsArr=res;
-      console.log(res);
+      // console.log(res);
       
-      console.log(`productsArr is ${JSON.stringify(this.productsArr)}`);
+      // console.log(`productsArr is ${JSON.stringify(this.productsArr)}`);
       this.getInCart();
     },
     error:err=>{
@@ -73,7 +73,7 @@ export class CartComponent implements OnInit{
                                                             
           
       );
-      console.log(`productsInCartArr is ${this.productsInCartArr}`);
+      // console.log(`productsInCartArr is ${this.productsInCartArr}`);
       if(this.productsInCartArr.length===0)
       {
         this.isCartEmpty=true;

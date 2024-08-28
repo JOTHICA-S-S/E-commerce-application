@@ -22,6 +22,7 @@ const routes: Routes = [
   {path:"SignUp",component:SignUpComponent},
   {path:"home",component:HomeComponent,
     children:[
+      {path:"", redirectTo:"Products",pathMatch:"full"},
       {path:"Ecommerce",component:EcommComponent},
       {path:"cart",component:CartComponent}, 
       {path:"Products",component:ProductsListComponent,canActivate:[authGuard]},

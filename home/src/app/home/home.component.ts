@@ -11,6 +11,10 @@ import { NavigateService } from '../navigate.service';
 export class HomeComponent implements OnInit{
   productInCart=0;
   selectedItem:string='';
+  cartCount:any;
+  cartArr:any=[];
+  count:any;
+
   constructor(private router:Router, public authService:AuthService,private navser:NavigateService){
     this.router.events.subscribe(
       event=>{
@@ -20,10 +24,10 @@ export class HomeComponent implements OnInit{
            if(event instanceof NavigationEnd)
            {
              this.setselectedItem(event.urlAfterRedirects);
-             console.log(event.urlAfterRedirects);
-             console.log(event);
+            //  console.log(event.urlAfterRedirects);
+            //  console.log(event);
            }
-       })
+       });      
   }
  
   
@@ -36,7 +40,19 @@ export class HomeComponent implements OnInit{
     this.navser.cartCounted.subscribe(
       res=>this.productInCart=res
     )
+
+    this.navser.getUserCart().subscribe({
+      next:(res)=>{
+        this.cartArr=res;
+        // console.log(`cart array is ${this.cartArr}`);
+        // console.log(this.cartArr.length);
+        this.count=this.cartArr.length;      
+          this.navser.cartCount.next(this.count);
+        }
+    });
+    console.log(`this.navser.cartCounted is ${(this.navser.cartCounted)}`);
     
+    this.cartCount=this.navser.cartCounted;
   }
 
  
@@ -60,7 +76,7 @@ export class HomeComponent implements OnInit{
   signOut()
   {
       localStorage.removeItem("token");
-localStorage.removeItem("emailLogged");
+      localStorage.removeItem("emailLogged");
       this.router.navigate(["/SignIn"]);
   }
 }

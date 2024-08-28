@@ -23,10 +23,6 @@ export class NavigateService {
 
   cartCounted=this.cartCount.asObservable();
 
-  addCount(count:number)
-  {
-    this.cartCount.next(count);
-  }
 
   setRole(role:string)
   {
@@ -49,11 +45,9 @@ export class NavigateService {
 
   getUserCart()
   {
-    console.log(localStorage.getItem('emailLogged'));
-    
-    
-    
-     return this.http.get<any>(`${this.getCart}?email=${localStorage.getItem('emailLogged')}`);
+    console.log(`get user cart from navigate service`);
+    const email =localStorage.getItem('emailLogged');
+     return this.http.get<any>(`${this.getCart}?email=${email}`);
   }
 
   AddToUserCart(productId:string){

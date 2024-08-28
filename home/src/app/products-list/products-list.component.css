@@ -8,6 +8,7 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-content:space-evenly;
+    
 }
 
 .dds__card{
@@ -25,5 +26,16 @@
 
 .dds__tabs__list{
     background-color: white;
+    top:0px;
+    position: fixed;
+    width:100vw;
+    z-index: 1000;
+    box-shadow: inset 0px -3px 4px 0px rgb(14, 14, 14, 0.3);
+}
+
+
+.dds__tabs{
+    position: relative;
+   top:16px;
 }
 

@@ -95,8 +95,10 @@
                     <div class="dds__card__body">{{data.description}}</div>
                     <div class="dds__card__footer">
                         
-                        <button  (click)="AddProductToUserCart(data)" class="dds__button dds__button--secondary dds__button--sm dds__card__footer__item" type="button">Add to cart</button>
-                        <button  (click)="RemoveProductFromUserCart(data)" class="dds__button dds__button--primary dds__button--sm dds__card__footer__item" type="button">Added to cart</button>
+                        <button *ngIf="!IsproductInCart(data.id); else Remove" (click)="AddProductToUserCart(data)" class="dds__button dds__button--secondary dds__button--sm dds__card__footer__item" type="button">Add to cart</button>
+                        <ng-template #Remove>
+                          <button *ngIf="IsproductInCart(data.id)" (click)="RemoveProductFromUserCart(data)" class="dds__button dds__button--primary dds__button--sm dds__card__footer__item" type="button">Remove from cart</button>
+                        </ng-template>
 
                     </div>
                     </div>
@@ -126,9 +128,10 @@
                             </div>
                         <div class="dds__card__body">{{data.description}}</div>
                             <div class="dds__card__footer">                        
-                              <button *ngIf="!data.inCart" (click)="AddProductToUserCart(data)" class="dds__button dds__button--secondary dds__button--sm dds__card__footer__item" type="button">Add to cart</button>
-                              <button *ngIf="data.inCart" (click)="RemoveProductFromUserCart(data)" class="dds__button dds__button--primary dds__button--sm dds__card__footer__item" type="button">Added to cart</button>
-                            </div>
+                              <button *ngIf="!IsproductInCart(data.id); else Remove" (click)="AddProductToUserCart(data)" class="dds__button dds__button--secondary dds__button--sm dds__card__footer__item" type="button">Add to cart</button>
+                              <ng-template #Remove>
+                                <button *ngIf="IsproductInCart(data.id)" (click)="RemoveProductFromUserCart(data)" class="dds__button dds__button--primary dds__button--sm dds__card__footer__item" type="button">Remove from cart</button>
+                              </ng-template>                            </div>
                         </div>
                     </div>
                            
@@ -158,15 +161,17 @@
                                 <span class="dds__card__header__subtitle">{{data.category}}</span>
                                 </span>
                             </div>
-                        <div class="dds__card__body">{{data.description}}</div>
+                            <div class="dds__card__body">{{data.description}}</div>
                             <div class="dds__card__footer">
                                 
-                              <button *ngIf="!data.inCart" (click)="AddProductToUserCart(data)" class="dds__button dds__button--secondary dds__button--sm dds__card__footer__item" type="button">Add to cart</button>
-                              <button *ngIf="data.inCart" (click)="RemoveProductFromUserCart(data)" class="dds__button dds__button--primary dds__button--sm dds__card__footer__item" type="button">Added to cart</button>                                  </div>
+                              <button *ngIf="!IsproductInCart(data.id); else Remove" (click)="AddProductToUserCart(data)" class="dds__button dds__button--secondary dds__button--sm dds__card__footer__item" type="button">Add to cart</button>
+                              <ng-template #Remove>
+                                <button *ngIf="IsproductInCart(data.id)" (click)="RemoveProductFromUserCart(data)" class="dds__button dds__button--primary dds__button--sm dds__card__footer__item" type="button">Remove from cart</button>
+                              </ng-template>                  
+                            </div>                       
                         </div>
                     </div>
-                           
-                </ng-container>
+                 </ng-container>
             </ng-container>
             
         </div>
@@ -194,9 +199,10 @@
                         <div class="dds__card__body">{{data.description}}</div>
                             <div class="dds__card__footer">
                                 
-                              <button *ngIf="!data.inCart" (click)="AddProductToUserCart(data)" class="dds__button dds__button--secondary dds__button--sm dds__card__footer__item" type="button">Add to cart</button>
-                              <button *ngIf="data.inCart" (click)="RemoveProductFromUserCart(data)" class="dds__button dds__button--primary dds__button--sm dds__card__footer__item" type="button">Added to cart</button>
-                                  </div>
+                              <button *ngIf="!IsproductInCart(data.id); else Remove" (click)="AddProductToUserCart(data)" class="dds__button dds__button--secondary dds__button--sm dds__card__footer__item" type="button">Add to cart</button>
+                              <ng-template #Remove>
+                                <button *ngIf="IsproductInCart(data.id)" (click)="RemoveProductFromUserCart(data)" class="dds__button dds__button--primary dds__button--sm dds__card__footer__item" type="button">Remove from cart</button>
+                              </ng-template>                                  </div>
                         </div>
                     </div>
                            

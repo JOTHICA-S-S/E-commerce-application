@@ -230,6 +230,7 @@ router.put("/addToCart/:productId",verifyToken,(req,res)=>{
     const productID=String(req.params.productId);
     fs.readFile("data.json","utf-8",(err,data)=>{
         if(err){
+            res.setHeader('Content-Type','text/plain');
             res.status(500).send("error while reading the file");
             return;
         }
@@ -238,6 +239,7 @@ router.put("/addToCart/:productId",verifyToken,(req,res)=>{
 
         if (!user){
             res.status(404).send("user not found");
+            res.setHeader('Content-Type','text/plain');
             return;
         }
 
@@ -246,9 +248,11 @@ router.put("/addToCart/:productId",verifyToken,(req,res)=>{
         //Update the file
         fs.writeFile("data.json",JSON.stringify(users), (err)=>{
             if (err){
+                res.setHeader('Content-Type','text/plain');
                 res.send("error while writing the file");
                 return;
             }
+            res.setHeader('Content-Type','text/plain');
             res.status(200).send("Added to user's cart succesfully");
         });
     })
@@ -261,6 +265,7 @@ router.delete("/removeFromCart/:productId",verifyToken,(req,res)=>{
     const productID=String(req.params.productId);
     fs.readFile("data.json","utf-8",(err,data)=>{
         if(err){
+            res.setHeader('Content-Type','text/plain');
             res.status(500).send("error while reading the file");
             return;
         }
@@ -268,6 +273,7 @@ router.delete("/removeFromCart/:productId",verifyToken,(req,res)=>{
         let user=users.find(u=>u.email===userEmail);
 
         if (!user){
+            res.setHeader('Content-Type','text/plain');
             res.status(404).send("user not found");
             return;
         }
@@ -275,6 +281,7 @@ router.delete("/removeFromCart/:productId",verifyToken,(req,res)=>{
        const productIndex=user.cart.findIndex(product=>product.productID===productID);
 
         if (productIndex===-1){
+            res.setHeader('Content-Type','text/plain');
             res.send("product not in cart");
         }
 
@@ -286,6 +293,7 @@ router.delete("/removeFromCart/:productId",verifyToken,(req,res)=>{
                 res.send(err);
                 return;
             }
+            res.setHeader('Content-Type','text/plain');
             res.status(200).send("removed from user's cart succesfully");
         });
     })
@@ -301,6 +309,7 @@ router.get("/cart",verifyToken,(req,res)=>{
         let userArr=JSON.parse(data);
         let user=userArr.find(user=>user.email===userEmail);
         if (!user){
+            res.setHeader('Content-Type','text/plain');
             res.send("user not found");
         }
         let cartArr=user.cart;

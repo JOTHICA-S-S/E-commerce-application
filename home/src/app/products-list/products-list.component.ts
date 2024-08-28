@@ -12,18 +12,22 @@ export class ProductsListComponent implements OnInit {
     productsData:any=[];
     columns: any[] = [];
     data: any[] = [];
-    cartCountComp:number=0;
+    cartArr:any=[];
+    count:any;
     
 
   constructor(private navService:NavigateService, private route:Router){}
 
       ngOnInit(): void {
         this.get();
-        this.navService.cartCounted.subscribe(
-          res=>
-            this.cartCountComp=res
-        );
-        //console.log("incartcomp");
+        this.navService.getUserCart().subscribe({
+          next:(res)=>{
+            this.cartArr=res;
+            console.log(`cart array is ${JSON.stringify(this.cartArr)}`);
+            console.log(`the cart length is ${this.cartArr.length}`);
+            this.count=this.cartArr.length;         
+            }
+        });
         
        }
 
@@ -130,12 +134,17 @@ export class ProductsListComponent implements OnInit {
     
     this.navService.AddToUserCart((data.id)).subscribe(res=>
       console.log(`res from product compoenent ${res}`));
+      this.count++;
+      this.navService.cartCount.next(this.count);
   }
 
   RemoveProductFromUserCart(data:any){
     this.navService.removeFromUserCart(data.id).subscribe(res=>
       console.log(`res from product compoenent ${res}`)
     );
+
+    this.count--;
+      this.navService.cartCount.next(this.count);
   }
 }
 

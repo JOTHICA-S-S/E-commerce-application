@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit{
         // console.log(`cart array is ${this.cartArr}`);
         // console.log(this.cartArr.length);
         this.count=this.cartArr.length;      
-          this.cartCount.next(this.count);      
+          this.navser.cartCount.next(this.count);      
         }
     });
 

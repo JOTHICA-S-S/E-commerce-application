@@ -22,7 +22,14 @@ export class CartComponent implements OnInit{
   ngOnInit()
   {
     this.getProducts();
-   
+    this.navServ.getUserCart().subscribe({
+      next:(res)=>{
+        this.cartArr=res;
+        console.log(`cart array is ${JSON.stringify(this.cartArr)}`);
+        console.log(`the cart length is ${this.cartArr.length}`);
+        this.count=this.cartArr.length;         
+        }
+    });
    
   }
 
@@ -102,14 +109,11 @@ export class CartComponent implements OnInit{
   //removing product Id from the cart property in user database
   
   RemoveProductFromUserCart(data:any){
-    this.navServ.removeFromUserCart(data.id).subscribe({
-      next:(res)=>{
-                console.log(res);
-      }});
-   
-    this.getProducts();
-        this.count=this.userCartArr.length;      
-          this.navServ.cartCount.next(this.count);
+    this.navServ.removeFromUserCart(data.id).subscribe();    
+      this.getProducts();
+      this.count--;
+      this.navServ.cartCount.next(this.count);
+      
     }
   
   

@@ -246,7 +246,7 @@ router.put("/addToCart/:productId",verifyToken,(req,res)=>{
         //Update the file
         fs.writeFile("data.json",JSON.stringify(users), (err)=>{
             if (err){
-                res.send(err);
+                res.send("error while writing the file");
                 return;
             }
             res.status(200).send("Added to user's cart succesfully");

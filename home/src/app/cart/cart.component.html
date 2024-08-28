@@ -1,4 +1,4 @@
-<div class="flexcards">
+<div class="flexcards" *ngIf="!isCartEmpty, else Empty">
     <ng-container *ngFor="let data of productsInCartArr">
         <ng-container >
             <div class="dds__card" >
@@ -26,3 +26,15 @@
     </ng-container>
     
 </div>
+<ng-template #Empty>
+    <div class="emptyDiv">
+        <div class="empty">
+            <p> Your Cart is empty</p>
+            <br>
+            <div> Check out the available <a routerLink="/home/Products">Products</a></div>
+        </div>
+    </div>
+    
+</ng-template>
+
+<router-outlet></router-outlet>

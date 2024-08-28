@@ -49,11 +49,9 @@ export class NavigateService {
 
   getUserCart()
   {
-    console.log(localStorage.getItem('emailLogged'));
-    
-    
-    
-     return this.http.get<any>(`${this.getCart}?email=${localStorage.getItem('emailLogged')}`);
+    console.log(`get user cart from navigate service`);
+    const email =localStorage.getItem('emailLogged');
+     return this.http.get<any>(`${this.getCart}?email=${email}`);
   }
 
   AddToUserCart(productId:string){
@@ -62,7 +60,7 @@ export class NavigateService {
     const body={email};
     console.log(`from service adding product in cart`);
     
-    return this.http.put<any>(`${this.UpdateUsercart}/${productId}`,{body});
+    return this.http.put<any>(`${this.UpdateUsercart}/${productId}`,body);
   }
 
   removeFromUserCart(productId:string){

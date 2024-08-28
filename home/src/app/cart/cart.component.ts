@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NavigateService } from '../navigate.service';
 import { Router } from '@angular/router';
 
@@ -13,6 +13,7 @@ export class CartComponent implements OnInit{
   cartCountComp:number=0;
   productsArr:any=[];
   productsInCartArr:any=[];
+  isCartEmpty:boolean=false;
   
 
   constructor(private navServ:NavigateService,private route:Router){}
@@ -20,11 +21,7 @@ export class CartComponent implements OnInit{
   ngOnInit()
   {
     this.getProducts();
-    this.navServ.cartCounted.subscribe(
-      res=>
-        this.cartCountComp=res
     
-    );
   }
 
   getInCart()
@@ -33,7 +30,7 @@ export class CartComponent implements OnInit{
         next:res=>{
             
             this.userCartArr=res;
-            console.log(`userCartArr is ${JSON.stringify(this.userCartArr)}`);
+            // console.log(`userCartArr is ${JSON.stringify(this.userCartArr)}`);
             this.getProductsInCart();
             
         },
@@ -49,9 +46,9 @@ export class CartComponent implements OnInit{
   this.navServ.getProducts().subscribe({
     next:res=>{
       this.productsArr=res;
-      console.log(res);
+      // console.log(res);
       
-      console.log(`productsArr is ${JSON.stringify(this.productsArr)}`);
+      // console.log(`productsArr is ${JSON.stringify(this.productsArr)}`);
       this.getInCart();
     },
     error:err=>{
@@ -65,20 +62,29 @@ export class CartComponent implements OnInit{
  }
 
 
- getProductsInCart(){
-  
-    this.productsInCartArr=this.productsArr.filter((productObj: { id: any; })=>
-     
-      this.userCartArr.some((cart: { productID: any; })=>
+  getProductsInCart(){
+    
+      this.productsInCartArr=this.productsArr.filter((productObj: { id: any; })=>
+      
+        this.userCartArr.some((cart: { productID: any; })=>
+                                                              
+                                                              cart.productID===productObj.id
+                                                          )
                                                             
-                                                            cart.productID===productObj.id
-                                                         )
-                                                          
-        
-    );
-    console.log(`productsInCartArr is ${this.productsInCartArr}`);
-  
- }
+          
+      );
+      // console.log(`productsInCartArr is ${this.productsInCartArr}`);
+      if(this.productsInCartArr.length===0)
+      {
+        this.isCartEmpty=true;
+      }
+      else
+      {
+        this.isCartEmpty=false;
+      }
+    
+  }
+
   //updating boolean value for product in product database which is not correct approach
   // removeFromCart(product:any)
   // {
@@ -92,11 +98,17 @@ export class CartComponent implements OnInit{
 
 
   //removing product Id from the cart property in user database
+  
   RemoveProductFromUserCart(data:any){
-    this.navServ.removeFromUserCart(data.id).subscribe(res=>
-      console.log(res)
+    this.navServ.removeFromUserCart(data.id).subscribe({
+      next:(res)=>{
+                console.log(res);
+                
+      }
+    }
     );
-    this.getProductsInCart();
+    this.getProducts();
+    
   }
 
 }

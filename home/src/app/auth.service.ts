@@ -17,7 +17,8 @@ export class AuthService {
   }
 
   signIn(userData:any)
-  {  localStorage.setItem("emailLogged",userData.email)
+  {  localStorage.setItem("emailLogged",userData.email);
+    
      return this.http.post<any>(this.SignInUrl,userData);
   }
 

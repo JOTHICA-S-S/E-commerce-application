@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -61,7 +61,7 @@ count:any;
     const body={email};
     console.log(`from service adding product in cart`);
     
-    return this.http.put<any>(`${this.UpdateUsercart}/${productId}`,body);
+    return this.http.put<any>(`${this.UpdateUsercart}/${productId}`,body,{responseType: 'text' as 'json'});
   }
 
   removeFromUserCart(productId:string){

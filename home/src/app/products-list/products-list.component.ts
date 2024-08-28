@@ -14,21 +14,14 @@ export class ProductsListComponent implements OnInit {
     data: any[] = [];
     cartArr:any=[];
     count:any;
+    checkCartArr:any=[];
     
 
   constructor(private navService:NavigateService, private route:Router){}
 
       ngOnInit(): void {
-        this.get();
-        this.navService.getUserCart().subscribe({
-          next:(res)=>{
-            this.cartArr=res;
-            console.log(`cart array is ${JSON.stringify(this.cartArr)}`);
-            console.log(`the cart length is ${this.cartArr.length}`);
-            this.count=this.cartArr.length;         
-            }
-        });
         
+        this.get();
        }
 
       ngAfterViewInit(){
@@ -45,6 +38,15 @@ export class ProductsListComponent implements OnInit {
                 this.processData(res);
                 // console.log("inside get");
                 // console.log(this.productsData);  
+                this.navService.getUserCart().subscribe({
+                  next:(res)=>{
+                    this.cartArr=res;
+                    this.checkCartArr=this.cartArr;
+                    console.log(`cart array is ${JSON.stringify(this.cartArr)}`);
+                    console.log(`the cart length is ${this.cartArr.length}`);
+                    this.count=this.cartArr.length;         
+                    }
+                });
                 
             },
             error: err=>{
@@ -98,53 +100,45 @@ export class ProductsListComponent implements OnInit {
           columns:this.columns
         });
       }
-
-  // addToCart(product:any)
-  // {
-  //   product.inCart=true;
-
-  //   //updating cart value in products 
-  //   // this.navService.updateCart(product.id,true).subscribe(
-  //   //   res=>console.log(`res from add to cart ${JSON.stringify(res)}`)
-  //   // );
-
-  //   this.navService.updateCart_user(product.id).subscribe(
-  //     res=>console.log(`res after adding cart to user ${JSON.stringify(res)}`)
-  //   );
-
-  //   this.cartCountComp=this.cartCountComp+1;
-  //   this.navService.cartCount.next(this.cartCountComp);
-  //   console.log(`count after added is ${this.cartCountComp}`);
-
-  // }
-
-  //updating boolean value in products database which is not correct approach
-  // removeFromCart(product:any)
-  // {
-  //   product.inCart=false;
-  //   this.navService.updateCart(product.id,false).subscribe();
-  //   this.cartCountComp=this.cartCountComp-1;
-  //   this.navService.cartCount.next(this.cartCountComp);
-  //   console.log(`count after removed is ${this.cartCountComp}`);
-  // }
   
 
   AddProductToUserCart(data:any){
-    console.log(`in added to cart`);
-    
-    this.navService.AddToUserCart((data.id)).subscribe(res=>
-      console.log(`res from product compoenent ${res}`));
-      this.count++;
+    console.log(`in added to cart`);   
+    this.navService.AddToUserCart(data.id).subscribe({
+      next:res=>{
+        console.log(`res from adding product to cart ${res}`);
+      },
+      error:err=>{
+        console.log(`error while adding product to cart ${JSON.stringify(err)}`);    
+      },
+      complete:()=> {
+       
+        this.count++;
       this.navService.cartCount.next(this.count);
+      console.log("refereshing the view");
+      
+      this.get();
+        
+      }
+    });
+      
   }
 
   RemoveProductFromUserCart(data:any){
     this.navService.removeFromUserCart(data.id).subscribe(res=>
       console.log(`res from product compoenent ${res}`)
     );
-
     this.count--;
       this.navService.cartCount.next(this.count);
+      this.get();
+  }
+
+  IsproductInCart(id:any){
+    
+    
+    // console.log(`checking whther productin cart @ ${JSON.stringify(this.checkCartArr)}`);
+    
+    return this.cartArr.some((item: { productID: any; })=>item.productID===id);
   }
 }
 

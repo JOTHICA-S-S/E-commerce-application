@@ -23,6 +23,10 @@ export class NavigateService {
 
   cartCounted=this.cartCount.asObservable();
 
+  addCount(count:number)
+  {
+    this.cartCount.next(count);
+  }
 
   setRole(role:string)
   {

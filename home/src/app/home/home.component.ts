@@ -9,7 +9,6 @@ import { NavigateService } from '../navigate.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
-  productInCart=0;
   selectedItem:string='';
   cartCount:any;
   cartArr:any=[];
@@ -37,22 +36,20 @@ export class HomeComponent implements OnInit{
     // console.log( this.router);
 
     //subscribe to the behavioursubject for count in navservice and updated in producst-list componenet
-    this.navser.cartCounted.subscribe(
-      res=>this.productInCart=res
-    )
-
     this.navser.getUserCart().subscribe({
       next:(res)=>{
         this.cartArr=res;
         // console.log(`cart array is ${this.cartArr}`);
         // console.log(this.cartArr.length);
         this.count=this.cartArr.length;      
-          this.navser.cartCount.next(this.count);
+          this.cartCount.next(this.count);      
         }
     });
-    console.log(`this.navser.cartCounted is ${(this.navser.cartCounted)}`);
-    
-    this.cartCount=this.navser.cartCounted;
+
+
+   this.navser.cartCounted.subscribe(count=>
+              {this.cartCount=count;}
+   );    
   }
 
  

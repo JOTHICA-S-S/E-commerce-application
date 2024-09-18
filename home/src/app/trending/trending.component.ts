@@ -6,11 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./trending.component.css']
 })
 export class TrendingComponent {
-
-  
-  // ngAfterViewInit(){
-  //   const element = document.getElementById("tabs-895821743");
-  //   DDS.Tabs(element);
-  // }
+  ngAfterViewInit(){
+    const element = document.getElementById("tabs-864039589");
+    DDS.Tabs(element);;
+  }
 
 }

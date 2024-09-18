@@ -1,8 +1,12 @@
+
+
 <div class="container">
     <div class="card">
         <div class="header">
-            <p>Welcome to <p>
-            <p> E-Commerce Application !</p>
+            <app-carousel></app-carousel>
+            <p style="margin-top:20px">Welcome to E-Commerce Application !<p>
+              
+            
         </div>
         <div class="content" *ngIf="!authService.isAuthenticated()">
             <p class="signIn"><a routerLink="/SignIn">sign In</a> To view the application</p>

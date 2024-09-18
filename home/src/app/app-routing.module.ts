@@ -14,10 +14,12 @@ import { childAuthGuard } from './child-auth.guard';
 import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { StartComponent } from './start/start.component';
+import { CarouselComponent } from './carousel/carousel.component';
 
 const routes: Routes = [
   {path:'',redirectTo:"start", pathMatch:"full"},
   {path:"start",component:StartComponent},
+  // {path:"carousel",component:CarouselComponent},
   {path:"SignIn",component:SignInComponent,canDeactivate:[deactiveAuthGuard]},
   {path:"SignUp",component:SignUpComponent},
   {path:"home",component:HomeComponent,

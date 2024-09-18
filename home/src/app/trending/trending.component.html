@@ -1,7 +1,7 @@
 <div id="tabs-895821743" class="dds__tabs" data-dds="tabs">
     <div class="dds__tabs__list-container">
       <ul class="dds__tabs__list dds__tabs__list--overflow" role="tablist" aria-orientation="horizontal">
-        <li role="none" routerLink="/Trending/shops">
+        <li role="none">
           <button 
             id="tab-332680210-0"
             class="dds__tabs__tab"
@@ -9,12 +9,13 @@
             aria-controls="tab-332680210-0-pane"
             aria-selected="true"
             tabindex="0"
+            
           >
             <span class="dds__tabs__tab__label" title="Tab 1">Shops</span>
           </button>
         </li>
-
-        <li role="none" routerLink="/Trending/collections">
+      
+        <li role="none">
           <button
             id="tab-882711740-1"
             class="dds__tabs__tab"
@@ -22,6 +23,7 @@
             aria-controls="tab-882711740-1-pane"
             aria-selected="false"
             tabindex="-1"
+           
           >
             <span class="dds__tabs__tab__label" title="Tab 2">Collections</span>
           </button>
@@ -30,7 +32,12 @@
       </ul>
     </div>
     <div class="dds__tabs__pane-container">
-        <router-outlet></router-outlet>
+      <div id="tab-0-pane" class="dds__tabs__pane" role="tabpanel" tabindex="0" aria-hidden="false" aria-labelledby="tab-0">
+        Shops
+      </div>
+      <div id="tab-1-pane" class="dds__tabs__pane" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tab-1">
+        Collections
+        </div>
     </div>
   </div>
 

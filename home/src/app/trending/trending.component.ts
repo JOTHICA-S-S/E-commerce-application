@@ -8,9 +8,9 @@ import { Component } from '@angular/core';
 export class TrendingComponent {
 
   
-  ngAfterViewInit(){
-    const element = document.getElementById("tabs-895821743");
-    DDS.Tabs(element);
-  }
+  // ngAfterViewInit(){
+  //   const element = document.getElementById("tabs-895821743");
+  //   DDS.Tabs(element);
+  // }
 
 }

@@ -198,7 +198,7 @@ router.get("/productData",verifyToken, (req,res)=>{
 
 function verifyToken(req,res, next)
 {
-    //checking whther the request headers has authorization key or not
+    //checking whether the request headers has authorization key or not
     if(!req.headers.authorization)
     {
         res.status(404).send("unathorized request");
@@ -238,8 +238,8 @@ router.put("/addToCart/:productId",verifyToken,(req,res)=>{
         let user=users.find(u=>u.email===userEmail);
 
         if (!user){
-            res.status(404).send("user not found");
             res.setHeader('Content-Type','text/plain');
+            res.status(404).send("user not found");
             return;
         }
 

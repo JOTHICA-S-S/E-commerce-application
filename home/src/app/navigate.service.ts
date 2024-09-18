@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -60,7 +60,6 @@ count:any;
     const email =localStorage.getItem('emailLogged');
     const body={email};
     console.log(`from service adding product in cart`);
-    
     return this.http.put<any>(`${this.UpdateUsercart}/${productId}`,body,{responseType: 'text' as 'json'});
   }
 
@@ -70,6 +69,5 @@ count:any;
     const body={email};
     return this.http.request<void>('delete',`${this.removeUrl}/${productId}`,{body});
   }
-
 }
 

@@ -17,6 +17,7 @@ import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { StartComponent } from './start/start.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CarouselComponent } from './carousel/carousel.component';
     CartComponent,
     HomeComponent,
     StartComponent,
-    CarouselComponent
+    CarouselComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

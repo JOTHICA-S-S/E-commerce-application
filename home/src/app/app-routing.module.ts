@@ -15,6 +15,7 @@ import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { StartComponent } from './start/start.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { ModalComponent } from './modal/modal.component';
 
 const routes: Routes = [
   {path:'',redirectTo:"start", pathMatch:"full"},
@@ -22,6 +23,7 @@ const routes: Routes = [
   // {path:"carousel",component:CarouselComponent},
   {path:"SignIn",component:SignInComponent,canDeactivate:[deactiveAuthGuard]},
   {path:"SignUp",component:SignUpComponent},
+  // {path:"modal",component:ModalComponent},
   {path:"home",component:HomeComponent,
     children:[
       {path:"", redirectTo:"Products",pathMatch:"full"},

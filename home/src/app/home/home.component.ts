@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { NavigateService } from '../navigate.service';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit{
+  @ViewChild('ModalComponent', { read: ViewContainerRef, static: true })container!: ViewContainerRef;
   selectedItem:string='';
   cartCount:any;
   cartArr:any=[];
@@ -76,4 +79,20 @@ export class HomeComponent implements OnInit{
       localStorage.removeItem("emailLogged");
       this.router.navigate(["/SignIn"]);
   }
+
+  openModel()
+{
+this.container.clear();
+const componentRef=this.container.createComponent(ModalComponent);
+componentRef.instance.closeEvent.subscribe((res:boolean)=>
+  {if(res){
+    this.closeModel();
+  }});
+}
+
+closeModel()
+{
+  this.container.clear();
+}
+
 }

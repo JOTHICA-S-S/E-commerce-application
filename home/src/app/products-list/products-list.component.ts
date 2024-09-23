@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigateService } from '../navigate.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject, count } from 'rxjs';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-products-list',
@@ -15,13 +16,26 @@ export class ProductsListComponent implements OnInit {
     cartArr:any=[];
     count:any;
     checkCartArr:any=[];
-    
+    loggedUserMail:any;
+    loggedUserGender:any;
+    loggedUser:any;
 
-  constructor(private navService:NavigateService, private route:Router){}
+  constructor(private navService:NavigateService, private route:Router, private authService:AuthService){}
 
       ngOnInit(): void {
         
         this.get();
+        this.authService.getUserData().subscribe({
+          next:data=>{
+              
+              console.log(`User data is ${JSON.stringify(data)}`);
+              this.loggedUserMail=localStorage.getItem('emailLogged');
+              console.log(`loggedUserMail is ${this.loggedUserMail}`);
+              this.loggedUser=data.find((userInfo: { email: any; })=>userInfo.email===this.loggedUserMail);
+              this.loggedUserGender=this.loggedUser.gender;
+              console.log(`loggedUserGender is ${this.loggedUserGender}`);
+          }
+        });
        }
 
       ngAfterViewInit(){

@@ -127,6 +127,7 @@
                                 <span class="dds__card__header__subtitle">{{data.category}}</span>
                                 </span>
                             </div>
+                            <div class="dds__card__body">{{data.price | currency :'INR'}}</div>
                         <div class="dds__card__body">{{data.description}}</div>
                             <div class="dds__card__footer">                        
                               <button *ngIf="!IsproductInCart(data.id); else Remove" (click)="AddProductToUserCart(data)" class="dds__button dds__button--secondary dds__button--sm dds__card__footer__item" type="button">Add to cart</button>
@@ -145,8 +146,39 @@
 
       <div id="tab-2-pane" class="dds__tabs__pane" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tab-2">
         <div class="flexcards">
-            <ng-container *ngFor="let data of productsData">
-                <ng-container *ngIf="data.category.includes('clothing')">
+            <ng-container *ngFor="let data of productsData">            
+                <ng-container *ngIf="loggedUserGender==='female'; else Mensclothing">
+                  <ng-container *ngIf="data.category==='women\'s clothing'">
+                    <div class="dds__card">
+                        <div class="dds__card__media">
+                            <img
+                                src="{{data.image}}"
+                                alt="{{data.title}}"
+                            />
+                        </div>
+                        <div class="dds__card__content">
+                            <div class="dds__card__header">
+                                
+                                <span class="dds__card__header__text">
+                                <h5 class="dds__card__header__title">{{data.title}}</h5>
+                                <span class="dds__card__header__subtitle">{{data.category}}</span>
+                                </span>
+                            </div>
+                            <div class="dds__card__body">{{data.price | currency :'INR'}}</div>
+                            <div class="dds__card__body">{{data.description}}</div>
+                            <div class="dds__card__footer">
+                                
+                              <button *ngIf="!IsproductInCart(data.id); else Remove" (click)="AddProductToUserCart(data)" class="dds__button dds__button--secondary dds__button--sm dds__card__footer__item" type="button">Add to cart</button>
+                              <ng-template #Remove>
+                                <button *ngIf="IsproductInCart(data.id)" (click)="RemoveProductFromUserCart(data)" class="dds__button dds__button--primary dds__button--sm dds__card__footer__item" type="button">Remove from cart</button>
+                              </ng-template>                  
+                            </div>                       
+                        </div>
+                    </div>
+                  </ng-container>
+                </ng-container>
+                <ng-template #Mensclothing>
+                  <ng-container *ngIf="data.category==='men\'s clothing'">
                     <div class="dds__card">
                         <div class="dds__card__media">
                             <img
@@ -172,10 +204,11 @@
                             </div>                       
                         </div>
                     </div>
-                 </ng-container>
+                  </ng-container>
+              </ng-template>
             </ng-container>
             
-        </div>
+          </div>
       </div>
 
       <div id="tab-3-pane" class="dds__tabs__pane" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tab-3">

@@ -1,6 +1,7 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ComponentFactoryResolver, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-ecomm',
@@ -8,14 +9,11 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./ecomm.component.css']
 })
 export class EcommComponent {
-@ViewChild ('carousel_slide') carouselSlide!:ElementRef<HTMLElement>;
+
+  
+
   constructor(public authService:AuthService){}
   
-   imagesArr=[
-    
-];
-
-
 
 
 }

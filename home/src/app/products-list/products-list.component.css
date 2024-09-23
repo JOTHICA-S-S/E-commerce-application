@@ -19,7 +19,7 @@
     margin-left:0px;
     border:1px solid #0e0e0e;
     height:80vh;
-    max-width:60vw;
+    max-width:85vw;
     overflow: scroll;
 }
 
@@ -28,7 +28,7 @@
     top:0px;
     position: fixed;
     width:100vw;
-    z-index: 1000;
+    z-index: 998;
     box-shadow: inset 0px -1px 0px 0px rgb(14, 14, 14, 0.3);
 }
 

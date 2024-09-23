@@ -13,5 +13,4 @@ export class TrendingComponent {
     // DDS.Tabs(element);
     new DDS.Tabs(this.tabs.nativeElement);
   }
-
 }

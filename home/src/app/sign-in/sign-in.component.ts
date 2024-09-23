@@ -14,7 +14,7 @@ export class SignInComponent{
   isSubmitting:boolean=false;
   errorText:string='';
   showBar:boolean=false;
-  
+  userInfo:any=[];
 
   constructor(private authService:AuthService, private route:Router){}
 
@@ -35,6 +35,15 @@ export class SignInComponent{
             localStorage.setItem("token",res.token);
             this.route.navigate(["/home/Products"]);
             this.isSubmitting=true;
+
+
+            //using service to get user Data
+            this.authService.getUserData().subscribe({
+              next:data=>{
+                  this.userInfo=data;
+                  console.log(`User data is ${JSON.stringify(this.userInfo)}`);
+              }
+            });
         }
         ,
         error:err=>{

@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit{
   @ViewChild('ModalComponent', { read: ViewContainerRef, static: true })container!: ViewContainerRef;
   selectedItem:string='';
   cartCount:any;
-  cartArr:any=[];
+  cartArr:any=[];   
   count:any;
 
   constructor(private router:Router, public authService:AuthService,private navser:NavigateService){
@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit{
               {this.cartCount=count;}
    );    
   }
-
+ 
  
 
   setselectedItem(url:string)
